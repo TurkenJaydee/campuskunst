@@ -64,7 +64,7 @@ const FontSelect = ({ setFontSize }) => {
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
                     value={currentValue}
-                    MenuProps={{ disableScrollLock: true }}
+                    MenuProps={{ disableScrollLock: true}}
                     onChange={handleChange}
                     className={classes.select}
                 >
