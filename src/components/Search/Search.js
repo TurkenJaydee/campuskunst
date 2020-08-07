@@ -1,35 +1,17 @@
 import React, { Fragment } from "react";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import { Container } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import Filter from '../Filter/Filter';
+import { makeStyles } from "@material-ui/core/styles";
+import Filter from "../Filter/Filter";
 
-
-const useStyles = makeStyles(theme => ({
-
+const useStyles = makeStyles((theme) => ({
   searchBar: {
-    backgroundColor: 'white',
-    fontSize: '1.3rem',
-    marginBottom: '1rem',
+    marginBottom: "1rem",
   },
 }));
 
-
-const Search = ({
-  setSearchValue,
-  searchValue,
-  tags,
-  setTags,
-  value,
-  valuetext,
-  onChange,
-  min,
-  max,
-  toggleFilter,
-}) => {
-
-
-  const handleSearchInputChanges = e => {
+const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, onChange, min, max, toggleFilter }) => {
+  const handleSearchInputChanges = (e) => {
     setSearchValue(e.target.value);
   };
 
@@ -37,10 +19,11 @@ const Search = ({
 
   return (
     <Fragment>
-      <Container maxWidth="md">
+      <Container maxWidth="md" className={classes.searchBarContainer}>
         <TextField
           id="Suchfeld"
           label="Suchfeld"
+          placeholder="Suchfeld"
           type="search"
           variant="outlined"
           className={classes.searchBar}
@@ -48,6 +31,9 @@ const Search = ({
           aria-label="Suchfeld"
           value={searchValue}
           onChange={handleSearchInputChanges}
+          InputLabelProps={{
+            shrink: false,
+          }}
         />
       </Container>
       <Container>

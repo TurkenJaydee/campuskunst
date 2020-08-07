@@ -33,8 +33,8 @@ const artpiece = (props) => {
         },
 
         name: {
-            textAlign: 'center',
             marginBottom: '0',
+            fontWeight: '400',
         },
 
         tagIcon: {
@@ -45,6 +45,7 @@ const artpiece = (props) => {
         },
 
         firstChild: {
+            textAlign: 'center',
             paddingBottom: '0 !important',
         },
 
@@ -79,10 +80,10 @@ const artpiece = (props) => {
         if (tagList) {
             return (tagList.split(',').map(tag => {
                 return (
-                    <div className={classes.tag} key={tagList.indexOf(tag)}>
+                    <span className={classes.tag} key={tagList.indexOf(tag)}>
                         <LocalOfferOutlinedIcon className={classes.tagIcon} />
                         {tag.trim()}
-                    </div>
+                    </span>
                 );
             }));
         }
@@ -103,12 +104,12 @@ const artpiece = (props) => {
                             >
                             </CardMedia>
                             <CardContent className={classes.firstChild}>
-                                <Typography className={classes.name} gutterBottom variant="h5">
+                                <Typography className={classes.name} gutterBottom variant="caption">
                                     {props.name}
                                 </Typography>
                             </CardContent>
                             <CardContent className={classes.lastChild}>
-                                <Typography variant="subtitle2" className={classes.tags}>
+                                <Typography variant="subtitle2" variantMapping={{subtitle2: 'p'}} className={classes.tags}>
                                     {returnTags(props.tag)}
                                 </Typography>
                             </CardContent>
