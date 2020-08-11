@@ -22,7 +22,6 @@ const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, 
       <Container maxWidth="md" className={classes.searchBarContainer}>
         <TextField
           id="Suchfeld"
-          label="Suchfeld"
           placeholder="Suchfeld"
           type="search"
           variant="outlined"
