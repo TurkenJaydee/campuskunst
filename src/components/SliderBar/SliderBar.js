@@ -24,24 +24,24 @@ const marks = [
   },
   {
     value: 1940,
-    label: '2000',
+    label: '1940',
   },
   {
     value: 1960,
-    label: '2010',
+    label: '1960',
   },
   {
     value: 1980,
-    label: '2020',
+    label: '1980',
   },
 
   {
     value: 2000,
-    label: '1900',
+    label: '2000',
   },
   {
     value: 2020,
-    label: '2000',
+    label: '2020',
   },
 ];
 
