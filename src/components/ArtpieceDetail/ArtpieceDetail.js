@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Container from "@material-ui/core/Container";
-import { API_PATH } from "../Artpieces/Artpieces";
+import API_PATH from "../../localapi/localapi";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MapContainer from "../MapContainer/MapContainer";
@@ -8,6 +8,7 @@ import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 import Typography from "@material-ui/core/Typography";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Chip from "@material-ui/core/Chip";
 
 const ArtpieceDetail = ({ match }) => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const ArtpieceDetail = ({ match }) => {
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
   const fetchArtpiece = async () => {
-    const data = await fetch(API_PATH);
+    const data = await fetch(API_PATH("artpieces"));
     const artpiece = await data.json();
 
     var contains = artpiece.filter((artpiece) => artpiece.name.replace("-", "/") === match.params.name.replace("-", "/"))[0];
@@ -153,19 +154,16 @@ const ArtpieceDetail = ({ match }) => {
       margin: "1rem 0 2rem 0",
     },
 
-    tag: {
-      paddingRight: "20px",
-      display: "inline-block",
-      margin: "1rem",
-      color: "grey",
-      lineHeight: "1.5rem",
+    chip: {
+      marginRight: "0.5rem",
+      color: 'white',
     },
 
     tagIcon: {
       display: "inline-block",
       verticalAlign: "bottom",
-      marginRight: "0.2rem",
-      color: "grey",
+      marginLeft: '0.5rem',
+      color: "white",
     },
 
     artistHeading: {
@@ -194,6 +192,10 @@ const ArtpieceDetail = ({ match }) => {
       height: "100%",
       marginTop: "4rem",
     },
+
+    error: {
+      marginTop: "4rem",
+    },
   }));
 
   const classes = useStyles();
@@ -208,39 +210,46 @@ const ArtpieceDetail = ({ match }) => {
         </div>
         <Container className={classes.attributesWrapper} maxWidth="md">
           <div className={classes.attributeHeader}>
-            <Typography variant="h3" variantMapping={{h3: 'h1'}} className={classes.title}>
+            <Typography variant="h3" variantMapping={{ h3: "h1" }} className={classes.title}>
               {artpiece.name}
             </Typography>
-            <Typography variant="subtitle1" variantMapping={{subtitle1: 'h2'}} align="center" className={classes.subtitle}>
+            <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
               {artpiece.subtitle}
             </Typography>
-            <Typography variant="subtitle2" variantMapping={{subtitle2: 'h2'}} className={classes.tags}>
+            <Typography variant="subtitle2" variantMapping={{ subtitle2: "h2" }} className={classes.tags}>
               {artpiece.tags.split(",").map((tag, id) => {
                 return (
-                  <div className={classes.tag} key={id}>
-                    <LocalOfferOutlinedIcon className={classes.tagIcon} />
-                    {tag}
-                  </div>
+                  <Fragment>
+                    <Chip
+                      className={classes.chip}
+                      key={artpiece.tags.indexOf(tag)}
+                      color="primary"
+                      variant="default"
+                      size="small"
+                      label={tag.trim()}
+                      icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
+                    />
+                  </Fragment>
                 );
               })}
             </Typography>
           </div>
           <div className={classes.attributes}>
             <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{h5: 'h2'}} className={classes.artistHeading}>
+              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
                 KünstlerIn
               </Typography>
               {artpiece.artist}
             </div>
 
             <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{h5: 'h2'}} className={classes.artistHeading}>
+              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
                 Datum
               </Typography>
               {artpiece.date}
             </div>
             <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{h5: 'h2'}} className={classes.artistHeading}>
+              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
                 Größe
               </Typography>
               12x36cm
@@ -274,7 +283,11 @@ const ArtpieceDetail = ({ match }) => {
       </main>
     );
   } catch (e) {
-    return <CircularProgress />;
+    return (
+      <Container className={classes.error} maxWidth="md">
+        <CircularProgress />
+      </Container>
+    );
   }
 };
 

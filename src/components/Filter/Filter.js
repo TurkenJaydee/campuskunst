@@ -5,6 +5,11 @@ import BrushOutlinedIcon from '@material-ui/icons/BrushOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import Button from '@material-ui/core/Button';
 import SliderBar from '../SliderBar/SliderBar';
+import FilterHdrOutlinedIcon from '@material-ui/icons/FilterHdrOutlined';
+import AccessibilityNewOutlinedIcon from '@material-ui/icons/AccessibilityNewOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
+import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,14 +32,17 @@ const Filter = (
     toggleFilter }
 ) => {
 
+  const brushIcon = <BrushOutlinedIcon style={{marginLeft: '0.5rem'}} /> 
+
+
 
   const TAGLIST = [
-    { name: "Landschaft" },
-    { name: "Skulptur" },
-    { name: "Installation" },
-    { name: "Gemälde", icon: <BrushOutlinedIcon /> },
-    { name: "Bild", icon: <BrushOutlinedIcon /> },
-    { name: "Sonstiges", icon: <BrushOutlinedIcon /> }
+    { name: "Landschaft", icon: <FilterHdrOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
+    { name: "Skulptur", icon: <AccessibilityNewOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
+    { name: "Installation", icon: <SettingsOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
+    { name: "Gemälde", icon: <BrushOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
+    { name: "Bild", icon: <ImageOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
+    { name: "Sonstiges", icon: <CategoryOutlinedIcon style={{marginLeft: '0.5rem'}}/> }
   ]
 
   const addTag = (e) => {
@@ -52,6 +60,7 @@ const Filter = (
             key={index}
             name={tag.name}
             onClick={addTag}
+            icon={tag.icon}
           />
         })}
       </div>
@@ -69,6 +78,7 @@ const Filter = (
         className={classes.button}
         startIcon={<AutorenewOutlinedIcon />}
         onClick={toggleFilter}
+        size="large"
       >
         Filter
       </Button>

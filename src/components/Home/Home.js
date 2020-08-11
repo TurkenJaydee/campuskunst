@@ -7,12 +7,14 @@ import { Grid } from "@material-ui/core";
 import PaletteIconOutlinedIcon from "@material-ui/icons/PaletteOutlined";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import API_PATH from '../../localapi/localapi';
+import {databases} from '../../localapi/databases.enum';
 
 const home = () => {
   const [homeContent, setHomeContent] = useState([{}]);
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
-  const API_PATH = `http://localhost:8080`;
+  /* const API_PATH = `http://localhost:8080`; */
   /* const API_PATH = `../api/index_home.php`; */
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const home = () => {
   }, []);
 
   const fetchContent = async () => {
-    const data = await fetch(API_PATH);
+    const data = await fetch(API_PATH(databases.home));
     const resData = await data.json();
     setHomeContent(resData);
   };

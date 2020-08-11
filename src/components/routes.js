@@ -1,4 +1,4 @@
-import Links from './Links/Links';
+import Sources from './Sources/Sources';
 import References from './References/References';
 import Home from './Home/Home';
 import Artpieces from './Artpieces/Artpieces';
@@ -10,6 +10,6 @@ export default [
   { path: "/", name: "Start", Component: Home },
   { path: "/kunstwerke", name: "Kunstwerke", Component: Artpieces },
   { path: "/kunstwerke/:name", name: "Kunstwerk: ", Component: ArtpieceDetail },
-  { path: "/links", name: "Links", Component: Links },
+  { path: "/quellen", name: "Quellen", Component: Sources },
   { path: "/referenzen", name: "Referenzen", Component: References }
 ];

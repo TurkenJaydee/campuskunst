@@ -5,7 +5,7 @@ import Home from "../Home/Home";
 import Artpieces from "../Artpieces/Artpieces";
 import ArtpieceDetail from "../ArtpieceDetail/ArtpieceDetail";
 import NotFound from "../NotFound/NotFound";
-import Links from "../Links/Links";
+import Sources from "../Sources/Sources";
 import References from "../References/References";
 import Slogan from "../Slogan/Slogan";
 import { makeStyles } from "@material-ui/core/styles";
@@ -176,8 +176,8 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink exact to={"/links"} activeClassName={classes.activeLink}>
-                    Links
+                  <NavLink exact to={"/quellen"} activeClassName={classes.activeLink}>
+                    Quellen
                   </NavLink>
                 </li>
               </ul>
@@ -206,7 +206,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/kunstwerke" component={Artpieces} />
         <Route exact path="/referenzen" component={References} />
-        <Route exact path="/links" component={Links} />
+        <Route exact path="/quellen" component={Sources} />
         <Route path="/kunstwerke/:name" component={ArtpieceDetail} />
         <Route component={NotFound} />
       </Switch>

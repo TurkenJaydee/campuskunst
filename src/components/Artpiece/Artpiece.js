@@ -1,129 +1,138 @@
 import React, { Fragment } from "react";
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { Link } from 'react-router-dom';
-import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { Link } from "react-router-dom";
+import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 
 const artpiece = (props) => {
+  const useStyles = makeStyles((theme) => ({
+    card: {
+      width: "100%",
+    },
 
-    const useStyles = makeStyles(theme => ({
+    link: {
+      textDecoration: "none",
+      display: 'flex',
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
 
-        card: {
-            width: '100%',
-        },
+      "&:visited, &:hover, &:link, &:active": {
+        textDecoration: "none",
+        color: "inherit",
+      },
+    },
 
-        link: {
-            textDecoration: 'none',
+    chip: {
+      marginRight: "0.5rem",
 
-            '&:visited, &:hover, &:link, &:active': {
-                textDecoration: 'none',
-                color: 'inherit',
-            },
-        },
+      "&:hover": {
+          cursor: 'pointer',
+      },
+    },
 
-        tag: {
-            paddingRight: '20px',
-            display: 'inline-block',
-            color: 'grey',
-        },
+    name: {
+      marginBottom: "0",
+      fontWeight: "400",
+    },
 
-        name: {
-            marginBottom: '0',
-            fontWeight: '400',
-        },
+    tagIcon: {
+      display: "inline-block",
+      verticalAlign: "middle",
+      marginLeft: "0.5rem",
+      color: "white",
+    },
 
-        tagIcon: {
-            display: 'inline-block',
-            verticalAlign: 'middle',
-            marginRight: '0.1rem',
-            color: 'grey',
-        },
+    firstChild: {
+      textAlign: "center",
+      paddingBottom: "0 !important",
+    },
 
-        firstChild: {
-            textAlign: 'center',
-            paddingBottom: '0 !important',
-        },
+    lastChild: {
+      paddingBottom: "1rem !important",
+    },
 
-        lastChild: {
-            paddingBottom: '1rem !important',
-        },
+    meta: {
+      paddingBottom: "0",
+      textAlign: "center",
+    },
 
-        meta: {
-            paddingBottom: '0',
-            textAlign: 'center',
-        },
+    tags: {
+      textAlign: "center",
+    },
+    actionArea: {
+      height: "100%",
+      display: "flex",
+      alignItems: "flex-start",
+    },
+  }));
 
-        tags: {
-            textAlign: 'center',
-        },
-    }));
+  const classes = useStyles();
 
-    const classes = useStyles();
-
-    const imageEmpty = (imageString) => {
-        try {
-            return process.env.PUBLIC_URL + '/img/' + imageString;
-
-
-        } catch (e) {
-            console.log('Image not found of Artpiece with ID: ' + props.id);
-            return 'https://southseattle.edu/sites/default/files/error404/south-seattle-otter.jpg';
-        }
-    }
-
-    const returnTags = (tagList) => {
-        if (tagList) {
-            return (tagList.split(',').map(tag => {
-                return (
-                    <span className={classes.tag} key={tagList.indexOf(tag)}>
-                        <LocalOfferOutlinedIcon className={classes.tagIcon} />
-                        {tag.trim()}
-                    </span>
-                );
-            }));
-        }
-    }
-
+  const imageEmpty = (imageString) => {
     try {
-        return (
-            <Fragment>
-                <Card className={classes.card}>
-                    <CardActionArea >
-                        <Link className={classes.link} to={`/kunstwerke/${(props.name).replace("/", "-")}`}>
-                            <CardMedia
-                                component="img"
-                                image={imageEmpty(props.image)}
-                                title={props.name}
-                                height="300"
-                                alt={props.alt}
-                            >
-                            </CardMedia>
-                            <CardContent className={classes.firstChild}>
-                                <Typography className={classes.name} gutterBottom variant="caption">
-                                    {props.name}
-                                </Typography>
-                            </CardContent>
-                            <CardContent className={classes.lastChild}>
-                                <Typography variant="subtitle2" variantMapping={{subtitle2: 'p'}} className={classes.tags}>
-                                    {returnTags(props.tag)}
-                                </Typography>
-                            </CardContent>
-                        </Link>
-                    </CardActionArea>
-                </Card>
-            </Fragment >
-        );
+      return process.env.PUBLIC_URL + "/img/" + imageString;
     } catch (e) {
-        console.log(e);
-        return (
-            <CircularProgress />
-        );
+      console.log("Image not found of Artpiece with ID: " + props.id);
+      return "https://southseattle.edu/sites/default/files/error404/south-seattle-otter.jpg";
     }
-}
+  };
+
+  const returnTags = (tagList) => {
+    if (tagList) {
+      return tagList.split(",").map((tag) => {
+        return (
+          <Fragment>
+            <Chip
+              className={classes.chip}
+              key={tagList.indexOf(tag)}
+              color="primary"
+              variant="default"
+              size="small"
+              label={tag.trim()}
+              icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
+            />
+          </Fragment>
+        );
+      });
+    }
+  };
+
+  try {
+    return (
+      <Fragment>
+        <Card className={classes.card}>
+          <CardActionArea className={classes.actionArea}>
+            <Link className={classes.link} to={`/kunstwerke/${props.name.replace("/", "-")}`}>
+              <div>
+                <CardMedia component="img" image={imageEmpty(props.image)} title={props.name} height="300" alt={props.alt}></CardMedia>
+                <CardContent className={classes.firstChild}>
+                  <Typography className={classes.name} gutterBottom variant="caption">
+                    {props.name}
+                  </Typography>
+                </CardContent>
+              </div>
+
+              <CardContent className={classes.lastChild}>
+                <Typography variant="subtitle2" variantMapping={{ subtitle2: "p" }} className={classes.tags}>
+                  {returnTags(props.tag)}
+                </Typography>
+              </CardContent>
+            </Link>
+          </CardActionArea>
+        </Card>
+      </Fragment>
+    );
+  } catch (e) {
+    console.log(e);
+    return <CircularProgress />;
+  }
+};
 
 export default artpiece;

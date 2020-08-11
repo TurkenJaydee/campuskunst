@@ -7,10 +7,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Search from "../Search/Search";
 import { Typography } from "@material-ui/core";
+import API_PATH from '../../localapi/localapi';
+import {databases} from '../../localapi/databases.enum';
 
-export const API_PATH = `http://localhost:80`;
-
-/* export const API_PATH = `../api/index_artpieces.php`; */
 
 const useStyles = makeStyles((theme) => ({
   mainHeading: {
@@ -56,7 +55,7 @@ const artpieces = () => {
   const [sliderValue, setSliderValue] = React.useState([1900, 2020]);
 
   const fetchData = async () => {
-    const res = await fetch(API_PATH);
+    const res = await fetch(API_PATH(databases.artpieces));
     const resData = await res.json();
     setArtpieces(resData);
     setFilteredArtpieces(resData);

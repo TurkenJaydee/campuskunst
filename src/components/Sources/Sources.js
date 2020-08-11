@@ -11,7 +11,7 @@ import BusinessRoundedIcon from "@material-ui/icons/BusinessRounded";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import Fade from "@material-ui/core/Fade";
 
-const Links = () => {
+const Sources = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -273,4 +273,4 @@ const Links = () => {
   );
 };
 
-export default Links;
+export default Sources;

@@ -1,0 +1,1 @@
+export const databases = {home: 'home',  artpieces: 'artpieces', references: 'references', sources: 'sources'};
