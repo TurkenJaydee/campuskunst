@@ -32,9 +32,6 @@ const Filter = (
     toggleFilter }
 ) => {
 
-  const brushIcon = <BrushOutlinedIcon style={{marginLeft: '0.5rem'}} /> 
-
-
 
   const TAGLIST = [
     { name: "Landschaft", icon: <FilterHdrOutlinedIcon style={{marginLeft: '0.5rem'}}/> },

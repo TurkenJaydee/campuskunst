@@ -14,9 +14,6 @@ const home = () => {
   const [homeContent, setHomeContent] = useState([{}]);
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
-  /* const API_PATH = `http://localhost:8080`; */
-  /* const API_PATH = `../api/index_home.php`; */
-
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchContent();
