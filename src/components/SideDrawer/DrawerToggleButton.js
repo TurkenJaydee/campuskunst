@@ -5,6 +5,11 @@ import styles from "./hamburgers.min.css";
 
 const useStyles = makeStyles((theme) => ({
   toggleButton: {
+    position: 'absolute',
+    right: '3.5rem',
+    lineHeight: '2rem',
+    top: '1.2rem',
+
     [theme.breakpoints.up("md")]: {
       display: "none",
     },

@@ -37,10 +37,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     marginRight: "3.5rem",
     alignItems: "center",
-
-    [theme.breakpoints.up("xs")]: {
-      float: "right",
-    },
+    justifyContent: 'space-between',
 
     [theme.breakpoints.down("sm")]: {
       height: "4rem",
@@ -77,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
 
   toolbar_navigationItems: {
     fontSize: "1.2rem",
-    marginRight: "5rem",
 
     [theme.breakpoints.down("sm")]: {
       display: "none",
@@ -131,10 +127,6 @@ const useStyles = makeStyles((theme) => ({
       opacity: "1 !important",
     },
   },
-
-  navWrapper: {
-    flex: "1",
-  },
 }));
 
 const Toolbar = ({ drawerClickHandler, setFontSize }) => {
@@ -146,7 +138,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
         <div className={classes.toolbar} aria-label="navigations-header">
           <nav className={classes.toolbar_navigation}>
             <div>
-              <DrawerToggleButton click={drawerClickHandler} />
+              <DrawerToggleButton className={classes.toggleButton} click={drawerClickHandler} />
             </div>
             <div className={classes.navWrapper} />
             <NavLink exact to={"/"}>
