@@ -140,7 +140,6 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
             <div>
               <DrawerToggleButton className={classes.toggleButton} click={drawerClickHandler} />
             </div>
-            <div className={classes.navWrapper} />
             <NavLink exact to={"/"}>
               <SVG
                 className={classes.logo}
