@@ -3,12 +3,12 @@ import Artpiece from "../Artpiece/Artpiece";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Fade from "@material-ui/core/Fade";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Search from "../Search/Search";
 import { Typography } from "@material-ui/core";
 import API_PATH from '../../localapi/localapi';
 import {databases} from '../../localapi/databases.enum';
+import SpinningCircle from "../SpinningCircle/SpinningCircle";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -160,7 +160,7 @@ const artpieces = () => {
       </Fragment>
     );
   } else {
-    return <CircularProgress />;
+    return <SpinningCircle />;
   }
 };
 

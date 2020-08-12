@@ -9,6 +9,7 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import API_PATH from '../../localapi/localapi';
 import {databases} from '../../localapi/databases.enum';
+import SpinningCircle from "../SpinningCircle/SpinningCircle";
 
 const home = () => {
   const [homeContent, setHomeContent] = useState([{}]);
@@ -30,8 +31,10 @@ const home = () => {
   };
 
   const getTextStyle = (index) => {
-    if (homeContent[index]) {
+    if (homeContent[index] !== undefined) {
       return toggleEasyText ? homeContent[index].description_easy : homeContent[index].description;
+    } else {
+      return "Inhalt nicht gefunden.";
     }
   };
 
@@ -233,6 +236,8 @@ const home = () => {
         </Fade>
       </Fragment>
     );
+  } else {
+    return <SpinningCircle />;
   }
 };
 
