@@ -38,6 +38,7 @@ const Tag = (props) => {
       <Chip
         className={classes.chipDelete}
         clickable
+        role="button"
         key={props.index}
         color='primary'
         variant={isToggled ? "default" : "outlined"}
@@ -50,6 +51,7 @@ const Tag = (props) => {
       <Chip
         className={classes.chip}
         clickable
+        role="button"
         key={props.index}
         color='primary'
         variant={isToggled ? "default" : "outlined"}

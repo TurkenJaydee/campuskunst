@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { Route, Switch } from "react-router-dom";
-import Home from "../Home/Home";
+import Start from "../Start/Start";
 import Artpieces from "../Artpieces/Artpieces";
 import ArtpieceDetail from "../ArtpieceDetail/ArtpieceDetail";
 import NotFound from "../NotFound/NotFound";
@@ -153,7 +153,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
               <ul>
                 <li>
                   <NavLink exact to={"/"} activeClassName={classes.activeLink}>
-                    Home
+                    Start
                   </NavLink>
                 </li>
                 <li>
@@ -194,7 +194,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
         ))}
       </Switch>
       <Switch className={classes.links}>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Start} />
         <Route exact path="/kunstwerke" component={Artpieces} />
         <Route exact path="/referenzen" component={References} />
         <Route exact path="/quellen" component={Sources} />

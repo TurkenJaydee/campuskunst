@@ -3,10 +3,20 @@ import TextField from "@material-ui/core/TextField";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Filter from "../Filter/Filter";
+import { FormLabel } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   searchBar: {
     marginBottom: "1rem",
+  },
+  searchBarContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'left',
+  },
+  FormLabel: {
+
   },
 }));
 
@@ -20,9 +30,10 @@ const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, 
   return (
     <Fragment>
       <Container maxWidth="md" className={classes.searchBarContainer}>
+        <FormLabel for="Suchfeld" className={classes.FormLabel}>Suchfeld</FormLabel>
         <TextField
           id="Suchfeld"
-          placeholder="Suchfeld"
+          placeholder="Kunstwerkname"
           type="search"
           variant="outlined"
           className={classes.searchBar}

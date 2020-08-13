@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
-import Home from '../Home/Home';
+import Start from '../Start/Start';
 import Artpieces from '../Artpieces/Artpieces';
 import ArtpieceDetail from '../ArtpieceDetail/ArtpieceDetail';
 import NotFound from '../NotFound/NotFound';
@@ -58,14 +58,14 @@ const Header = () => {
                         />
                     </Link></li>
 
-                    <Link className={classes.navLink} to="/">Home</Link>
+                    <Link className={classes.navLink} to="/">Start</Link>
                     <Link className={classes.navLink} to='/artpieces'>Artpieces</Link>
                     <Link className={classes.navLink} to="/references">References</Link>
                     <Link className={classes.navLink} to="/links">Links</Link>
                     <Link className={classes.navLink} to="/test">Test</Link>
                 </Breadcrumbs>
                 <Switch className={classes.links}>
-                    <Route exact path='/' component={Home} />
+                    <Route exact path='/' component={Start} />
                     <Route exact path='/artpieces' component={Artpieces} />
                     <Route exact path='/references' component={References} />
                     <Route exact path='/links' component={Links} />

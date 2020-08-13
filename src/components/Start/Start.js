@@ -11,7 +11,7 @@ import API_PATH from '../../localapi/localapi';
 import {databases} from '../../localapi/databases.enum';
 import SpinningCircle from "../SpinningCircle/SpinningCircle";
 
-const home = () => {
+const start = () => {
   const [homeContent, setHomeContent] = useState([{}]);
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
@@ -21,9 +21,10 @@ const home = () => {
   }, []);
 
   const fetchContent = async () => {
-    const data = await fetch(API_PATH(databases.home));
+    const data = await fetch(API_PATH(databases.start));
     const resData = await data.json();
     setHomeContent(resData);
+    console.log(resData);
   };
 
   const onToggleEasyText = () => {
@@ -38,13 +39,32 @@ const home = () => {
     }
   };
 
+  const getImage = (index) => {
+    if (homeContent[index] !== undefined) {
+      if(homeContent[index].image !== '') {
+        return homeContent[index].image;
+      }
+    } else {
+      return "Bild nicht gefunden.";
+    }
+  };
+
+  const getImageAlt = (index) => {
+    if (homeContent[index] !== undefined) {
+      if(homeContent[index].image_alt !== '') {
+        return homeContent[index].image_alt;
+      }
+    } else {
+      return "Bild nicht gefunden.";
+    }
+  };
+
   const useStyles = makeStyles((theme) => ({
     content: {
       margin: "1rem",
       marginLeft: "auto",
       marginRight: "auto",
       width: toggleEasyText ? "70%" : "100%",
-      textAlign: "justify",
 
       [theme.breakpoints.down("sm")]: {
         padding: "0 1rem 0 1rem",
@@ -179,7 +199,7 @@ const home = () => {
               <Container maxWidth="md">
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
-                    <img className={classes.image} alt="geil" src={`${process.env.PUBLIC_URL + "/img/moenster.jpg"}`}></img>
+                    <img className={classes.image} alt={getImageAlt(1)} src={`${process.env.PUBLIC_URL + `/img/${getImage(1)}`}`}></img>
                   </Grid>
                   <Grid item sm={12} md={6}>
                     <Typography variant="h4" variantMapping={{ h4: "h2" }}>
@@ -207,7 +227,7 @@ const home = () => {
                     <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(2) }}></Typography>
                   </Grid>
                   <Grid item sm={12} md={6}>
-                    <img className={classes.image} alt="geil" src={`${process.env.PUBLIC_URL + "/img/aussteiger.jpg"}`}></img>
+                    <img className={classes.image} alt={getImageAlt(2)} src={`${process.env.PUBLIC_URL + `/img/${getImage(2)}`}`}></img>
                   </Grid>
                 </Grid>
               </Container>
@@ -216,7 +236,7 @@ const home = () => {
               <Container maxWidth="md">
                 <Grid container spacing={3} alignItems="center">
                   <Grid className={classes.premiseListImg} item sm={12} md={6}>
-                    <img className={classes.image} alt="geil" src={`${process.env.PUBLIC_URL + "/img/recht_2.jpg"}`}></img>
+                    <img className={classes.image} alt={getImageAlt(3)} src={`${process.env.PUBLIC_URL + `/img/${getImage(3)}`}`}></img>
                   </Grid>
                   <Grid className={classes.premiseList} item sm={12} md={6}>
                     <div>
@@ -241,4 +261,4 @@ const home = () => {
   }
 };
 
-export default home;
+export default start;

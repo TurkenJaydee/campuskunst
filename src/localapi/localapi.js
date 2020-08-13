@@ -3,7 +3,7 @@ let onLocal = false;
 const API_PATH = (db) => {
   process.env.NODE_ENV !== "production" ? onLocal = true : onLocal = false;
     
-  if (db === "home") {
+  if (db === "start") {
     return onLocal ? `http://localhost:8080` : `../api/index_home.php`;
   }
 
