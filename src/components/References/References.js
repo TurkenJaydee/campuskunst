@@ -41,7 +41,7 @@ const References = () => {
         },
 
         title: {
-            padding: '0.5rem',
+            marginLeft: '3rem'
         },
     }));
 

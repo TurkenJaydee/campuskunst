@@ -88,7 +88,7 @@ const Slogan = () => {
     <Fragment>
       <div className={classes.sloganWrapper}>
         <div className={classes.slogan}>
-          <Typography className={classes.sloganIntro}>Ein Projekt der Uni Bremen</Typography>
+          <Typography className={classes.sloganIntro}>Ein Projekt des Uni-Archivs Bremen</Typography>
           <Typography className={classes.sloganMain}>
             <span>CAMPUSKUNST</span>
           </Typography>

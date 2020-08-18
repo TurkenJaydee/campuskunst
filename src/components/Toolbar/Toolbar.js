@@ -5,7 +5,7 @@ import Start from "../Start/Start";
 import Artpieces from "../Artpieces/Artpieces";
 import ArtpieceDetail from "../ArtpieceDetail/ArtpieceDetail";
 import NotFound from "../NotFound/NotFound";
-import Sources from "../Sources/Sources";
+import Links from "../Links/Links";
 import References from "../References/References";
 import Slogan from "../Slogan/Slogan";
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     marginRight: "3.5rem",
     alignItems: "center",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
 
     [theme.breakpoints.down("sm")]: {
       height: "4rem",
@@ -127,6 +127,11 @@ const useStyles = makeStyles((theme) => ({
       opacity: "1 !important",
     },
   },
+
+  buaLogo: {
+    width: "80px",
+    marginLeft: '2rem'
+  },
 }));
 
 const Toolbar = ({ drawerClickHandler, setFontSize }) => {
@@ -167,13 +172,21 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink exact to={"/quellen"} activeClassName={classes.activeLink}>
-                    Quellen
+                  <NavLink exact to={"/links"} activeClassName={classes.activeLink}>
+                    Links
                   </NavLink>
                 </li>
               </ul>
             </div>
-            <FontSelect setFontSize={setFontSize} />
+            <div style={{display: 'flex'}}>
+              <FontSelect setFontSize={setFontSize} />
+              <img
+                className={classes.buaLogo}
+                src={require("./logo_archiv_web_200.png")}
+                description="Universität Bremen Logo"
+                alt="Zentralarchiv Bremen Logo"
+              />
+            </div>
           </nav>
         </div>
         <Slogan />
@@ -197,7 +210,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
         <Route exact path="/" component={Start} />
         <Route exact path="/kunstwerke" component={Artpieces} />
         <Route exact path="/referenzen" component={References} />
-        <Route exact path="/quellen" component={Sources} />
+        <Route exact path="/links" component={Links} />
         <Route path="/kunstwerke/:name" component={ArtpieceDetail} />
         <Route component={NotFound} />
       </Switch>

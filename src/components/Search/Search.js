@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     textAlign: 'left',
   },
-  FormLabel: {
-
-  },
 }));
 
 const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, onChange, min, max, toggleFilter }) => {

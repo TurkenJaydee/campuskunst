@@ -109,7 +109,7 @@ const sideDrawer = (props) => {
             </ListItemIcon>
             <ListItemText
               primary={
-                <Link className={classes.navLink} to="/quellen">
+                <Link className={classes.navLink} to="/links">
                   Links
                 </Link>
               }

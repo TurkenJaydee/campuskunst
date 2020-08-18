@@ -121,7 +121,7 @@ const artpieces = () => {
                   value={sliderValue}
                   valuetext={valuetext}
                   onChange={handleSliderChange}
-                  min={1900}
+                  min={1970}
                   max={2020}
                   toggleFilter={onToggleFilter}
                 />

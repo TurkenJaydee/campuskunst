@@ -15,39 +15,50 @@ const useStyles = makeStyles((theme) => ({
 
 const marks = [
   {
-    value: 1900,
-    label: '1900',
+    value: 1970,
+    label: '1970',
   },
   {
-    value: 1920,
-    label: '1920',
-  },
-  {
-    value: 1940,
-    label: '1940',
-  },
-  {
-    value: 1960,
-    label: '1960',
+    value: 1975,
+    label: '',
   },
   {
     value: 1980,
-    label: '1980',
+    label: '',
   },
-
+  {
+    value: 1985,
+    label: '',
+  },
+  {
+    value: 1990,
+    label: '',
+  },
+  {
+    value: 1995,
+    label: '1995',
+  },
   {
     value: 2000,
-    label: '2000',
+    label: '',
+  },
+  {
+    value: 2005,
+    label: '',
+  },
+  {
+    value: 2010,
+    label: '',
+  },
+  {
+    value: 2015,
+    label: '',
   },
   {
     value: 2020,
     label: '2020',
   },
 ];
-
-
-
-
 
 const SliderBar = (props) => {
   const classes = useStyles();
@@ -67,7 +78,7 @@ const SliderBar = (props) => {
           valueLabelDisplay="auto"
           min={props.min}
           max={props.max}
-          step={20}
+          step={5}
         />
       </div>
     </Fragment>

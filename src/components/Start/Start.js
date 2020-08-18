@@ -196,7 +196,7 @@ const start = () => {
               </Container>
             </div>
             <div className={`${classes.section} ${classes.program}`}>
-              <Container maxWidth="md">
+              <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
                     <img className={classes.image} alt={getImageAlt(1)} src={`${process.env.PUBLIC_URL + `/img/${getImage(1)}`}`}></img>
@@ -215,7 +215,7 @@ const start = () => {
               </Container>
             </div>
             <div className={`${classes.section} ${classes.goals}`}>
-              <Container maxWidth="md">
+              <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
                     <Typography variant="h4" variantMapping={{ h4: "h2" }}>
@@ -233,7 +233,7 @@ const start = () => {
               </Container>
             </div>
             <div className={`${classes.section} ${classes.premises}`}>
-              <Container maxWidth="md">
+              <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="center">
                   <Grid className={classes.premiseListImg} item sm={12} md={6}>
                     <img className={classes.image} alt={getImageAlt(3)} src={`${process.env.PUBLIC_URL + `/img/${getImage(3)}`}`}></img>
