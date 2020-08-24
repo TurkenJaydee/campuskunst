@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
   toolbar_navigationItems: {
     fontSize: "1.2rem",
+    zIndex: 1000,
 
     [theme.breakpoints.down("sm")]: {
       display: "none",

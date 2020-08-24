@@ -116,6 +116,16 @@ const start = () => {
       },
     },
 
+    exhibition: {
+      backgroundColor: "rgba(250, 250, 250);",
+
+      "& h1": {
+        [theme.breakpoints.down("sm")]: {
+          textAlign: "center",
+        },
+      },
+    },
+
     premiseList: {
       order: 2,
       [theme.breakpoints.down("sm")]: {
@@ -248,6 +258,24 @@ const start = () => {
                       </Typography>
                       <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(3) }}></Typography>
                     </div>
+                  </Grid>
+                </Grid>
+              </Container>
+            </div>
+            <div className={`${classes.section} ${classes.exhibition}`}>
+              <Container maxWidth="lg">
+                <Grid container spacing={3} alignItems="center">
+                  <Grid item sm={12} md={6}>
+                  <Typography variant="h4" variantMapping={{ h4: "h2" }}>
+                        AUSSTELLUNG{" "}
+                        <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
+                          KUNST IM STADTBILD
+                        </Typography>
+                      </Typography>
+                    <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(4) }}></Typography>
+                  </Grid>
+                  <Grid item sm={12} md={6}>
+                    <img className={classes.image} alt={getImageAlt(2)} src={`${process.env.PUBLIC_URL + `/img/${getImage(4)}`}`}></img>
                   </Grid>
                 </Grid>
               </Container>

@@ -8,7 +8,6 @@ import SliderBar from '../SliderBar/SliderBar';
 import FilterHdrOutlinedIcon from '@material-ui/icons/FilterHdrOutlined';
 import AccessibilityNewOutlinedIcon from '@material-ui/icons/AccessibilityNewOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
 
 const useStyles = makeStyles(theme => ({
@@ -38,8 +37,7 @@ const Filter = (
     { name: "Skulptur", icon: <AccessibilityNewOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
     { name: "Installation", icon: <SettingsOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
     { name: "Gemälde", icon: <BrushOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Bild", icon: <ImageOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Sonstiges", icon: <CategoryOutlinedIcon style={{marginLeft: '0.5rem'}}/> }
+    { name: "Ausstellung", icon: <CategoryOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
   ]
 
   const addTag = (e) => {

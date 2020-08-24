@@ -55,6 +55,7 @@ const artpieces = () => {
   const [sliderValue, setSliderValue] = React.useState([1900, 2020]);
 
   const fetchData = async () => {
+    window.scrollTo(0, 0);
     const res = await fetch(API_PATH(databases.artpieces));
     const resData = await res.json();
     setArtpieces(resData);
@@ -62,7 +63,6 @@ const artpieces = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     fetchData();
   }, []);
 
@@ -79,6 +79,10 @@ const artpieces = () => {
   const valuetext = (value) => {
     return value;
   };
+
+  const onEnterToggle = (e) => {
+    e.key === "Enter" ? setFilteredArtpieces(sortedArtpieces) : null;
+  }
 
   const onToggleFilter = () => {
     setFilteredArtpieces(sortedArtpieces);
@@ -124,6 +128,7 @@ const artpieces = () => {
                   min={1970}
                   max={2020}
                   toggleFilter={onToggleFilter}
+                  toogleFilterOnEnter={onEnterToggle}
                 />
                 <Typography className={classes.mainHeading} variant="h1" align="left" display="block">
                   Suchergebnisse:

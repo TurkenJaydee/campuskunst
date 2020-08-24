@@ -71,32 +71,32 @@ const Links = () => {
                 <List className={classes.list}>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon />
-                      <a href="http://www.bremer-archive.de/" target="_blank" rel="noopener noreferrer">
+                      <BusinessRoundedIcon aria-hidden="true" />
+                      <a href="http://www.bremer-archive.de/" rel="noopener noreferrer">
                         Arbeitskreis Bremer Archive
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon />
-                      <a href="http://www.museeninbremen.de/ausstellungen/" target="_blank" rel="noopener noreferrer">
+                      <BusinessRoundedIcon aria-hidden="true" />
+                      <a href="http://www.museeninbremen.de/ausstellungen/" rel="noopener noreferrer">
                         Museen in Bremen
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon />
-                      <a href="http://www.uni-bremen.de/" target="_blank" rel="noopener noreferrer">
+                      <BusinessRoundedIcon aria-hidden="true" />
+                      <a href="http://www.uni-bremen.de/" rel="noopener noreferrer">
                         Universit&auml;t Bremen
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon />
-                      <a href="http://www.uni-bremen.de/archiv" target="_blank" rel="noopener noreferrer">
+                      <BusinessRoundedIcon aria-hidden="true" />
+                      <a href="http://www.uni-bremen.de/archiv" rel="noopener noreferrer">
                         Universit&auml;tsarchiv Bremen
                       </a>
                     </ListItemText>
@@ -114,71 +114,71 @@ const Links = () => {
                 <List className={classes.list}>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.nthome.de/ellen/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.nthome.de/ellen/" rel="noopener noreferrer">
                         Ellen Heinemann
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.pkfkrueger.de/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.pkfkrueger.de/" rel="noopener noreferrer">
                         Peter K. F. Kr&uuml;ger
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.artur-laskus.com" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.artur-laskus.com" rel="noopener noreferrer">
                         Artur Laskus
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://de.wikipedia.org/wiki/Louis_le_Roy" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://de.wikipedia.org/wiki/Louis_le_Roy" rel="noopener noreferrer">
                         Louis le Roy
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.jubmoenster.de/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.jubmoenster.de/" rel="noopener noreferrer">
                         Jub Mönster
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="https://www.mueller-in-art.de/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="https://www.mueller-in-art.de/" rel="noopener noreferrer">
                         Hans-J. Müller
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://kunstaspekte.de/person/horst-muller" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://kunstaspekte.de/person/horst-muller" rel="noopener noreferrer">
                         Horst M&uuml;ller
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.depelmann.de/shop/?S=hfrwnwgzu&A[K]=1&K=35" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.depelmann.de/shop/?S=hfrwnwgzu&A[K]=1&K=35" rel="noopener noreferrer">
                         Manfred Nipp
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
                       <a
                         href="https://www.worpsweder-gegenwartskunst.de/wwk/bildhauer/worpswede/waldemar-otto/136"
                         target="_blank"
@@ -190,32 +190,32 @@ const Links = () => {
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.jimmidpaesler.de/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.jimmidpaesler.de/" rel="noopener noreferrer">
                         Jimmi D. Paesler
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.edeltraut-rath.de/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.edeltraut-rath.de/" rel="noopener noreferrer">
                         Edeltraut Rath
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://volker-schnuettgen.com/" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true"/>
+                      <a href="http://volker-schnuettgen.com/" rel="noopener noreferrer">
                         Volker Schn&uuml;ttgen
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon />
-                      <a href="http://www.adriaanvanderende.de" target="_blank" rel="noopener noreferrer">
+                      <PaletteIconOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.adriaanvanderende.de" rel="noopener noreferrer">
                         Adriaan van der Ende
                       </a>
                     </ListItemText>
@@ -233,32 +233,32 @@ const Links = () => {
                 <List className={classes.list}>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon />
-                      <a href="http://www.bremer-archive.de/" target="_blank" rel="noopener noreferrer">
+                      <InfoOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.bremer-archive.de/" rel="noopener noreferrer">
                         Arbeitskreis Bremer Archive
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon />
-                      <a href="http://www.museeninbremen.de/ausstellungen/" target="_blank" rel="noopener noreferrer">
+                      <InfoOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.museeninbremen.de/ausstellungen/" rel="noopener noreferrer">
                         Museen in Bremen
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon />
-                      <a href="http://www.uni-bremen.de/" target="_blank" rel="noopener noreferrer">
+                      <InfoOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.uni-bremen.de/" rel="noopener noreferrer">
                         Universit&auml;t Bremen
                       </a>
                     </ListItemText>
                   </li>
                   <li>
                     <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon />
-                      <a href="http://www.uni-bremen.de/archiv" target="_blank" rel="noopener noreferrer">
+                      <InfoOutlinedIcon aria-hidden="true" />
+                      <a href="http://www.uni-bremen.de/archiv" rel="noopener noreferrer">
                         Universit&auml;tsarchiv Bremen
                       </a>
                     </ListItemText>

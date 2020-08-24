@@ -3,21 +3,32 @@ import TextField from "@material-ui/core/TextField";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Filter from "../Filter/Filter";
-import { FormLabel } from '@material-ui/core';
-
+import { FormLabel } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   searchBar: {
     marginBottom: "1rem",
   },
   searchBarContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'left',
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
   },
 }));
 
-const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, onChange, min, max, toggleFilter }) => {
+const Search = ({
+  setSearchValue,
+  searchValue,
+  tags,
+  setTags,
+  value,
+  valuetext,
+  onChange,
+  min,
+  max,
+  toggleFilter,
+  toogleFilterOnEnter,
+}) => {
   const handleSearchInputChanges = (e) => {
     setSearchValue(e.target.value);
   };
@@ -27,7 +38,9 @@ const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, 
   return (
     <Fragment>
       <Container maxWidth="md" className={classes.searchBarContainer}>
-        <FormLabel for="Suchfeld" className={classes.FormLabel}>Suchfeld</FormLabel>
+        <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
+          Suchfeld
+        </FormLabel>
         <TextField
           id="Suchfeld"
           placeholder="Kunstwerkname"
@@ -38,6 +51,7 @@ const Search = ({ setSearchValue, searchValue, tags, setTags, value, valuetext, 
           aria-label="Suchfeld"
           value={searchValue}
           onChange={handleSearchInputChanges}
+          onKeyPress={e => toogleFilterOnEnter(e)}
           InputLabelProps={{
             shrink: false,
           }}
