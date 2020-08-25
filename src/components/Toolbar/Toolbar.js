@@ -85,6 +85,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.2rem",
       lineHeight: "2rem",
       position: "relative",
+
+      [theme.breakpoints.down(1100)]: {
+        padding: "0 1rem",
+      },
     },
 
     "& a:after": {
@@ -125,11 +129,11 @@ const useStyles = makeStyles((theme) => ({
   buaLogo: {
     zIndex: 10000,
     width: "70px",
-    marginLeft: '2rem',
+    marginLeft: "2rem",
 
     [theme.breakpoints.down("sm")]: {
-      marginRight: '2rem',
-      width: '70px',
+      marginRight: "2rem",
+      width: "70px",
     },
   },
 }));
@@ -178,7 +182,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
                 </li>
               </ul>
             </div>
-            <div style={{display: 'flex'}}>
+            <div style={{ display: "flex" }}>
               <FontSelect setFontSize={setFontSize} />
               <img
                 className={classes.buaLogo}
