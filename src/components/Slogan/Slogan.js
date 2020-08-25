@@ -9,6 +9,14 @@ const Slogan = () => {
       backgroundPosition: "center center",
       padding: "7rem 0 7rem 0",
 
+      [theme.breakpoints.down(900)]: {
+        padding: "4rem 0 7rem 0",
+      },
+
+      [theme.breakpoints.down(600)]: {
+        padding: "3rem 0 7rem 0",
+      },
+
       [theme.breakpoints.down(420)]: {
         backgroundSize: "cover",
       },

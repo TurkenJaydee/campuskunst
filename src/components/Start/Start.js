@@ -87,6 +87,10 @@ const start = () => {
     art: {
       textAlign: "center",
       backgroundColor: "rgba(250, 250, 250)",
+
+      [theme.breakpoints.down('sm')]: {
+        paddingTop: '2rem',
+      },
     },
 
     program: {
@@ -155,6 +159,10 @@ const start = () => {
     formControl: {
       flexDirection: "column-reverse",
       marginBottom: "3rem",
+
+      [theme.breakpoints.down('sm')]: {
+        marginBottom: '1.5rem',
+      },
     },
 
     image: {
