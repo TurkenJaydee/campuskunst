@@ -68,6 +68,7 @@ const start = () => {
 
       [theme.breakpoints.down("sm")]: {
         padding: "0 1rem 0 1rem",
+        textAlign: 'left',
       },
 
       "& span": {
@@ -85,19 +86,15 @@ const start = () => {
 
     art: {
       textAlign: "center",
-      backgroundColor: "rgba(250, 250, 250);",
+      backgroundColor: "rgba(250, 250, 250)",
     },
 
     program: {
-      backgroundColor: "rgba(0, 0, 0, 0.04);",
-
-      [theme.breakpoints.down("sm")]: {
-        textAlign: "center",
-      },
+      backgroundColor: "rgba(0, 0, 0, 0.04)",
     },
 
     goals: {
-      backgroundColor: "rgba(250, 250, 250);",
+      backgroundColor: "rgba(250, 250, 250)",
 
       "& h1": {
         [theme.breakpoints.down("sm")]: {
@@ -137,6 +134,12 @@ const start = () => {
       order: 1,
       [theme.breakpoints.down("sm")]: {
         order: 2,
+      },
+    },
+
+    heading: {
+      [theme.breakpoints.down("sm")]: {
+        textAlign: "center",
       },
     },
 
@@ -192,7 +195,7 @@ const start = () => {
                   label="Einfache Sprache"
                 />
                 <h1>
-                  <Typography className={classes.firstChapter} variant="h4" variantMapping={{ h4: "span" }} >
+                  <Typography className={`${classes.firstChapter} ${classes.heading}`} variant="h4" variantMapping={{ h4: "span" }}>
                     <Typography variant="h2" variantMapping={{ h2: "span" }} display="inline" className={classes.keyword}>
                       KUNST
                     </Typography>{" "}
@@ -212,7 +215,7 @@ const start = () => {
                     <img className={classes.image} alt={getImageAlt(1)} src={`${process.env.PUBLIC_URL + `/img/${getImage(1)}`}`}></img>
                   </Grid>
                   <Grid item sm={12} md={6}>
-                    <Typography variant="h4" variantMapping={{ h4: "h2" }}>
+                    <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                       <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
                         PROGRAMM
                       </Typography>{" "}
@@ -228,7 +231,7 @@ const start = () => {
               <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
-                    <Typography variant="h4" variantMapping={{ h4: "h2" }}>
+                    <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                       <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
                         ZIELE{" "}
                       </Typography>{" "}
@@ -250,7 +253,7 @@ const start = () => {
                   </Grid>
                   <Grid className={classes.premiseList} item sm={12} md={6}>
                     <div>
-                      <Typography variant="h4" variantMapping={{ h4: "h2" }}>
+                      <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                         ES GALTEN ZWEI{" "}
                         <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
                           PRÄMISSEN
@@ -266,7 +269,7 @@ const start = () => {
               <Container maxWidth="lg">
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
-                  <Typography variant="h4" variantMapping={{ h4: "h2" }}>
+                  <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                         AUSSTELLUNG{" "}
                         <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
                           KUNST IM STADTBILD

@@ -11,6 +11,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import Fade from "@material-ui/core/Fade";
 import { databases } from "../../localapi/databases.enum";
 import API_PATH from "../../localapi/localapi";
+import SpinningCircle from "../SpinningCircle/SpinningCircle";
 
 const Links = () => {
   const [artists, setArtists] = useState([]);
@@ -40,10 +41,10 @@ const Links = () => {
     listItemText: {
       paddingLeft: "1rem",
 
-      '& span': {
-        display: 'flex',
-        alignItems: 'center',
-      }
+      "& span": {
+        display: "flex",
+        alignItems: "center",
+      },
     },
 
     main: {
@@ -95,16 +96,20 @@ const Links = () => {
                 </Typography>
                 <List className={classes.list}>
                   {institutions.map((institutionsData, index) => {
-                    return (
-                      <li key={index}>
-                        <ListItemText className={classes.listItemText}>
-                          <BusinessRoundedIcon aria-hidden="true" />
-                          <a href={`${institutionsData.link}`} rel="noopener noreferrer">
-                            {institutionsData.name}
-                          </a>
-                        </ListItemText>
-                      </li>
-                    );
+                    if (institutions.length > 0) {
+                      return (
+                        <li key={index}>
+                          <ListItemText className={classes.listItemText}>
+                            <BusinessRoundedIcon aria-hidden="true" />
+                            <a href={`${institutionsData.link}`} rel="noopener noreferrer">
+                              {institutionsData.name}
+                            </a>
+                          </ListItemText>
+                        </li>
+                      );
+                    } else {
+                      return <SpinningCircle />;
+                    }
                   })}
                 </List>
               </Typography>
@@ -118,16 +123,20 @@ const Links = () => {
                 </Typography>
                 <List className={classes.list}>
                   {artists.map((artistsData, index) => {
-                    return (
-                      <li key={index}>
-                        <ListItemText className={classes.listItemText}>
-                          <BusinessRoundedIcon aria-hidden="true" />
-                          <a href={`${artistsData.link}`} rel="noopener noreferrer">
-                            {artistsData.name}
-                          </a>
-                        </ListItemText>
-                      </li>
-                    );
+                    if (artists.length > 0) {
+                      return (
+                        <li key={index}>
+                          <ListItemText className={classes.listItemText}>
+                            <BusinessRoundedIcon aria-hidden="true" />
+                            <a href={`${artistsData.link}`} rel="noopener noreferrer">
+                              {artistsData.name}
+                            </a>
+                          </ListItemText>
+                        </li>
+                      );
+                    } else {
+                      return <SpinningCircle />;
+                    }
                   })}
                 </List>
               </Typography>
@@ -141,16 +150,20 @@ const Links = () => {
                 </Typography>
                 <List className={classes.list}>
                   {furtherInfo.map((furtherInfoData, index) => {
-                    return (
-                      <li key={index}>
-                        <ListItemText className={classes.listItemText}>
-                          <InfoOutlinedIcon aria-hidden="true" />
-                          <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
-                            {furtherInfoData.name}
-                          </a>
-                        </ListItemText>
-                      </li>
-                    );
+                    if (furtherInfo.length > 0) {
+                      return (
+                        <li key={index}>
+                          <ListItemText className={classes.listItemText}>
+                            <InfoOutlinedIcon aria-hidden="true" />
+                            <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
+                              {furtherInfoData.name}
+                            </a>
+                          </ListItemText>
+                        </li>
+                      );
+                    } else {
+                      return <SpinningCircle />;
+                    }
                   })}
                 </List>
               </Typography>

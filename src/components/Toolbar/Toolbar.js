@@ -38,10 +38,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "3.5rem",
     alignItems: "center",
     justifyContent: "space-between",
-
-    [theme.breakpoints.down("sm")]: {
-      height: "4rem",
-    },
+    height: "4rem",
   },
 
   logo: {
@@ -52,10 +49,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
 
     [theme.breakpoints.up("xs")]: {
-      width: "320px",
-    },
-
-    [theme.breakpoints.up("sm")]: {
       width: "350px",
     },
 
@@ -130,8 +123,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   buaLogo: {
-    width: "80px",
-    marginLeft: '2rem'
+    zIndex: 10000,
+    width: "70px",
+    marginLeft: '2rem',
+
+    [theme.breakpoints.down("sm")]: {
+      marginRight: '2rem',
+      width: '70px',
+    },
   },
 }));
 

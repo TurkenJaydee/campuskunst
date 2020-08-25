@@ -15,24 +15,17 @@ const useStyles = makeStyles((theme) => ({
 
   fontSizeSelect: {
     zIndex: 10000,
+    position: "absolute",
+    right: "9rem",
 
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
-
-    [theme.breakpoints.up("sm")]: {
-      position: "absolute",
-      right: "3rem",
-    },
-
-    [theme.breakpoints.up("md")]: {
-        position: "initial",
-      },
   },
 
   fontSizeWrapper: {
     display: 'flex',
-    marginTop: '-0.5rem',
+    marginTop: '-1rem',
     lineHeight: 1.66,
   },
 
