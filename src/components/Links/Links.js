@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,19 +6,44 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
-import PaletteIconOutlinedIcon from "@material-ui/icons/PaletteOutlined";
 import BusinessRoundedIcon from "@material-ui/icons/BusinessRounded";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import Fade from "@material-ui/core/Fade";
+import { databases } from "../../localapi/databases.enum";
+import API_PATH from "../../localapi/localapi";
 
 const Links = () => {
+  const [artists, setArtists] = useState([]);
+  const [institutions, setInstitutions] = useState([]);
+  const [furtherInfo, setFurtherInfo] = useState([]);
+
+  const fetchData = async () => {
+    window.scrollTo(0, 0);
+    const resArtists = await fetch(API_PATH(databases.artists));
+    const resFurtherInfo = await fetch(API_PATH(databases.furtherInfo));
+    const resInstitutions = await fetch(API_PATH(databases.institutions));
+    const resArtistsData = await resArtists.json();
+    const resFurtherInfoData = await resFurtherInfo.json();
+    const resInstitutionsData = await resInstitutions.json();
+
+    setArtists(resArtistsData);
+    setFurtherInfo(resFurtherInfoData);
+    setInstitutions(resInstitutionsData);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchData();
   }, []);
 
   const useStyles = makeStyles((theme) => ({
     listItemText: {
       paddingLeft: "1rem",
+
+      '& span': {
+        display: 'flex',
+        alignItems: 'center',
+      }
     },
 
     main: {
@@ -69,38 +94,18 @@ const Links = () => {
                   Institutionen
                 </Typography>
                 <List className={classes.list}>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon aria-hidden="true" />
-                      <a href="http://www.bremer-archive.de/" rel="noopener noreferrer">
-                        Arbeitskreis Bremer Archive
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon aria-hidden="true" />
-                      <a href="http://www.museeninbremen.de/ausstellungen/" rel="noopener noreferrer">
-                        Museen in Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon aria-hidden="true" />
-                      <a href="http://www.uni-bremen.de/" rel="noopener noreferrer">
-                        Universit&auml;t Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <BusinessRoundedIcon aria-hidden="true" />
-                      <a href="http://www.uni-bremen.de/archiv" rel="noopener noreferrer">
-                        Universit&auml;tsarchiv Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
+                  {institutions.map((institutionsData, index) => {
+                    return (
+                      <li key={index}>
+                        <ListItemText className={classes.listItemText}>
+                          <BusinessRoundedIcon aria-hidden="true" />
+                          <a href={`${institutionsData.link}`} rel="noopener noreferrer">
+                            {institutionsData.name}
+                          </a>
+                        </ListItemText>
+                      </li>
+                    );
+                  })}
                 </List>
               </Typography>
             </Paper>
@@ -112,114 +117,18 @@ const Links = () => {
                   KünstlerInnen
                 </Typography>
                 <List className={classes.list}>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.nthome.de/ellen/" rel="noopener noreferrer">
-                        Ellen Heinemann
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.pkfkrueger.de/" rel="noopener noreferrer">
-                        Peter K. F. Kr&uuml;ger
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.artur-laskus.com" rel="noopener noreferrer">
-                        Artur Laskus
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://de.wikipedia.org/wiki/Louis_le_Roy" rel="noopener noreferrer">
-                        Louis le Roy
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.jubmoenster.de/" rel="noopener noreferrer">
-                        Jub Mönster
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="https://www.mueller-in-art.de/" rel="noopener noreferrer">
-                        Hans-J. Müller
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://kunstaspekte.de/person/horst-muller" rel="noopener noreferrer">
-                        Horst M&uuml;ller
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.depelmann.de/shop/?S=hfrwnwgzu&A[K]=1&K=35" rel="noopener noreferrer">
-                        Manfred Nipp
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a
-                        href="https://www.worpsweder-gegenwartskunst.de/wwk/bildhauer/worpswede/waldemar-otto/136"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Waldemar Otto
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.jimmidpaesler.de/" rel="noopener noreferrer">
-                        Jimmi D. Paesler
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.edeltraut-rath.de/" rel="noopener noreferrer">
-                        Edeltraut Rath
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true"/>
-                      <a href="http://volker-schnuettgen.com/" rel="noopener noreferrer">
-                        Volker Schn&uuml;ttgen
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <PaletteIconOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.adriaanvanderende.de" rel="noopener noreferrer">
-                        Adriaan van der Ende
-                      </a>
-                    </ListItemText>
-                  </li>
+                  {artists.map((artistsData, index) => {
+                    return (
+                      <li key={index}>
+                        <ListItemText className={classes.listItemText}>
+                          <BusinessRoundedIcon aria-hidden="true" />
+                          <a href={`${artistsData.link}`} rel="noopener noreferrer">
+                            {artistsData.name}
+                          </a>
+                        </ListItemText>
+                      </li>
+                    );
+                  })}
                 </List>
               </Typography>
             </Paper>
@@ -231,38 +140,18 @@ const Links = () => {
                   Weiterführende Online-Informationen
                 </Typography>
                 <List className={classes.list}>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.bremer-archive.de/" rel="noopener noreferrer">
-                        Arbeitskreis Bremer Archive
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.museeninbremen.de/ausstellungen/" rel="noopener noreferrer">
-                        Museen in Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.uni-bremen.de/" rel="noopener noreferrer">
-                        Universit&auml;t Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
-                  <li>
-                    <ListItemText className={classes.listItemText}>
-                      <InfoOutlinedIcon aria-hidden="true" />
-                      <a href="http://www.uni-bremen.de/archiv" rel="noopener noreferrer">
-                        Universit&auml;tsarchiv Bremen
-                      </a>
-                    </ListItemText>
-                  </li>
+                  {furtherInfo.map((furtherInfoData, index) => {
+                    return (
+                      <li key={index}>
+                        <ListItemText className={classes.listItemText}>
+                          <InfoOutlinedIcon aria-hidden="true" />
+                          <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
+                            {furtherInfoData.name}
+                          </a>
+                        </ListItemText>
+                      </li>
+                    );
+                  })}
                 </List>
               </Typography>
             </Paper>

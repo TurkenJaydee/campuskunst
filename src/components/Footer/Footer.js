@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-function Copyright() {
+const Copyright = () => {
   return (
     <Fragment>
       <Typography variant="body2" color="textSecondary">
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StickyFooter() {
+const StickyFooter = () => {
   const classes = useStyles();
 
   return (
@@ -48,3 +48,5 @@ export default function StickyFooter() {
     </div>
   );
 }
+
+export default StickyFooter;

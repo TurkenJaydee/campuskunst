@@ -86,9 +86,9 @@ const artpiece = (props) => {
 
   const returnTags = (tagList) => {
     if (tagList) {
-      return tagList.split(",").map((tag) => {
+      return tagList.split(",").map((tag, index) => {
         return (
-          <Fragment>
+          <Fragment key={index}>
             <Chip
               className={classes.chip}
               key={tagList.indexOf(tag)}
@@ -120,7 +120,7 @@ const artpiece = (props) => {
               </div>
 
               <CardContent className={classes.lastChild}>
-                <Typography variant="subtitle2" variantMapping={{ subtitle2: "p" }} className={classes.tags}>
+                <Typography variant="subtitle2" className={classes.tags}>
                   {returnTags(props.tag)}
                 </Typography>
               </CardContent>

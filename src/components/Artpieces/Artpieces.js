@@ -6,10 +6,9 @@ import Fade from "@material-ui/core/Fade";
 import Container from "@material-ui/core/Container";
 import Search from "../Search/Search";
 import { Typography } from "@material-ui/core";
-import API_PATH from '../../localapi/localapi';
-import {databases} from '../../localapi/databases.enum';
+import API_PATH from "../../localapi/localapi";
+import { databases } from "../../localapi/databases.enum";
 import SpinningCircle from "../SpinningCircle/SpinningCircle";
-
 
 const useStyles = makeStyles((theme) => ({
   mainHeading: {
@@ -81,8 +80,8 @@ const artpieces = () => {
   };
 
   const onEnterToggle = (e) => {
-    e.key === "Enter" ? setFilteredArtpieces(sortedArtpieces) : null;
-  }
+    return e.key === "Enter" ? setFilteredArtpieces(sortedArtpieces) : null;
+  };
 
   const onToggleFilter = () => {
     setFilteredArtpieces(sortedArtpieces);
@@ -142,8 +141,6 @@ const artpieces = () => {
                       <Grid className={classes.item} item xs={12} sm={6} md={4} key={index}>
                         <Artpiece
                           className={classes.artpiece}
-                          id={artpiece.id}
-                          key={artpiece.id}
                           name={artpiece.name}
                           subtitle={artpiece.subtitle}
                           image={artpiece.image_1}

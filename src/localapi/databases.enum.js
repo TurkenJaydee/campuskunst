@@ -1,1 +1,1 @@
-export const databases = {start: 'start',  artpieces: 'artpieces', references: 'references', links: 'links'};
+export const databases = {start: 'start',  artpieces: 'artpieces', artists: 'artists', institutions: 'institutions', furtherInfo: 'furtherInfo', literature: 'literature', sources: 'sources'};

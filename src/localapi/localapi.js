@@ -11,12 +11,24 @@ const API_PATH = (db) => {
     return onLocal ? `http://localhost:80` : `../api/index_artpieces.php`;
   }
 
-  if (db === "references") {
-    return onLocal ? `http://localhost:8060` : `../api/index_references.php`;
+  if (db === "artists") {
+    return onLocal ? `http://localhost:10` : `../api/index_artists.php`;
   }
 
-  if (db === "links") {
-    return onLocal ? `http://localhost:60` : `../api/index_links.php`;
+  if (db === "institutions") {
+    return onLocal ? `http://localhost:60` : `../api/index_institutions.php`;
+  }
+
+  if (db === "furtherInfo") {
+    return onLocal ? `http://localhost:70` : `../api/index_furtherInfo.php`;
+  }
+
+  if (db === "literature") {
+    return onLocal ? `http://localhost:90` : `../api/index_literature.php`;
+  }
+
+  if (db === "sources") {
+    return onLocal ? `http://localhost:50` : `../api/index_sources.php`;
   }
 };
 

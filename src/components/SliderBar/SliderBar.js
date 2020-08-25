@@ -75,7 +75,6 @@ const SliderBar = (props) => {
           valueLabelDisplay="auto"
           aria-labelledby="jahres-slider"
           marks={marks}
-          valueLabelDisplay="auto"
           min={props.min}
           max={props.max}
           step={5}
