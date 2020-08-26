@@ -77,7 +77,7 @@ const References = () => {
                     return (
                       <ListItem key={index}>
                         <BookOutlinedIcon aria-hidden="true" />
-                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "h3" }} className={classes.source}>
+                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "p" }} className={classes.source}>
                           {sourceData.source}
                         </Typography>
                       </ListItem>
@@ -90,7 +90,7 @@ const References = () => {
           <Grid className={classes.item} item xs={12} md={6}>
             <Paper elevation={3} className={classes.paper}>
               <Typography component={"span"} className={classes.content}>
-                <Typography variant="h5" variantMapping={{ h5: "h3" }} className={classes.title}>
+                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.title}>
                   Literatur
                 </Typography>
                 <List className={classes.list}>
@@ -98,7 +98,7 @@ const References = () => {
                     return (
                       <ListItem key={index}>
                         <BookOutlinedIcon aria-hidden="true" />
-                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "h3" }} className={classes.source}>
+                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "p" }} className={classes.source}>
                           {literatureData.literature}
                         </Typography>
                       </ListItem>

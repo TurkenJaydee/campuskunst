@@ -60,7 +60,7 @@ const FontSelect = ({ setFontSize }) => {
     <div className={classes.fontSizeSelect}>
       <div className={classes.fontSizeWrapper}>
         <Typography variant="caption" className={classes.label} id="discrete-slider">
-          <img className={classes.icon} alt="Font Size Icon" src={FontIcon}></img>
+          <img className={classes.icon} alt="schriftgröße icon" src={FontIcon}></img>
         </Typography>
         <FormControl className={classes.formControl}>
           <InputLabel className={classes.inputLabel} id="demo-simple-select-helper-label">

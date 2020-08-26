@@ -154,8 +154,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
                 className={classes.logo}
                 src={require("./uni_logo.svg")}
                 description="Universität Bremen Logo"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
+                alt="Uni Logo - Link zur Startseite"
               />
             </NavLink>
             <div className={classes.toolbar_navigationItems}>

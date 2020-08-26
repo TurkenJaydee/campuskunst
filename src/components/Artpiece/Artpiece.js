@@ -113,14 +113,13 @@ const artpiece = (props) => {
               <div>
                 <CardMedia component="img" image={imageEmpty(props.image)} title={props.name} height="300" alt={props.alt}></CardMedia>
                 <CardContent className={classes.firstChild}>
-                  <Typography className={classes.name} gutterBottom variant="caption">
+                  <Typography className={classes.name} gutterBottom variant="span" variantMapping={{ span: "h2" }}>
                     {props.name}
                   </Typography>
                 </CardContent>
               </div>
-
               <CardContent className={classes.lastChild}>
-                <Typography variant="subtitle2" className={classes.tags}>
+                <Typography className={classes.tags}>
                   {returnTags(props.tag)}
                 </Typography>
               </CardContent>

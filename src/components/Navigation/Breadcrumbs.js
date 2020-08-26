@@ -39,12 +39,12 @@ const Breadcrumbs = ({ crumbs }) => {
       <MaterialBreadcrumbs className={classes.breadcrumbs} separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
         {crumbs.map(({ name, path }, key) =>
           key + 1 === crumbs.length ? (
-            <Typography key={key} color="textPrimary" variant="h5">
+            <Typography key={key} color="textPrimary" variant="h5" variantMapping={{ h5: "a" }}>
               {getActualName()}
             </Typography>
           ) : (
               <Link key={key} href={path} color="textPrimary" aria-current="page">
-                <Typography color="textPrimary" variant="h5">
+                <Typography color="textPrimary" variant="h5" variantMapping={{ h5: "a" }}>
                   {name}
                 </Typography>
               </Link>

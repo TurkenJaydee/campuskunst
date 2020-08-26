@@ -209,9 +209,9 @@ const start = () => {
                     <span className={classes.sectionHeading}>AN DER UNIVERSITÄT BREMEN </span>
                   </Typography>
                 </h1>
-                <PaletteIconOutlinedIcon />
-                <PaletteIconOutlinedIcon />
-                <PaletteIconOutlinedIcon />
+                <PaletteIconOutlinedIcon aria-hidden="true" />
+                <PaletteIconOutlinedIcon aria-hidden="true" />
+                <PaletteIconOutlinedIcon aria-hidden="true" />
                 <Typography variant="body1" className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(0) }}></Typography>
               </Container>
             </div>

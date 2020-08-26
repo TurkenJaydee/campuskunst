@@ -174,6 +174,13 @@ const ArtpieceDetail = ({ match }) => {
       fontWeight: 600,
     },
 
+    descriptionHeading: {
+      margin: "0 0 0.5rem 0",
+      fontFamily: "Montserrat",
+      fontWeight: 600,
+      padding: '0 6rem',
+    },
+
     description: {
       padding: "0 6rem",
       color: "rgba(0, 0, 0, 0.87)",
@@ -186,7 +193,14 @@ const ArtpieceDetail = ({ match }) => {
 
     formControl: {
       flexDirection: "column-reverse",
-      marginBottom: '1rem',
+      marginBottom: "1rem",
+    },
+
+    mapsHeading: {
+      margin: "0 0 0.5rem 0",
+      fontFamily: "Montserrat",
+      fontWeight: 600,
+      padding: "0 6rem",
     },
 
     mapsWrapper: {
@@ -266,11 +280,21 @@ const ArtpieceDetail = ({ match }) => {
           <FormControlLabel
             className={classes.formControl}
             control={
-              <Switch checked={toggleEasyText} onChange={onToggleEasyText} color="primary" name="Einfache Sprache Button" size="medium" />
+              <Switch
+                checked={toggleEasyText}
+                onChange={onToggleEasyText}
+                color="primary"
+                name="Einfache Sprache Button"
+                size="medium"
+                aria-label="Einfache Sprache ein und ausschalten"
+              />
             }
             label="Einfache Sprache"
           />
           <div className={classes.descriptionSection}>
+            <Typography className={classes.descriptionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+              Beschreibung
+            </Typography>
             <Typography
               className={classes.description}
               dangerouslySetInnerHTML={{ __html: getTextStyle() }}
@@ -280,6 +304,9 @@ const ArtpieceDetail = ({ match }) => {
             ></Typography>
           </div>
           <div className={classes.mapsWrapper}>
+            <Typography className={classes.mapsHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+              Standort
+            </Typography>
             <MapContainer
               apiKey="GELOESCHTER_API_KEY"
               lat={artpiece.location.split(",")[0]}
