@@ -10,7 +10,6 @@ import BookOutlinedIcon from "@material-ui/icons/BookOutlined";
 import Fade from "@material-ui/core/Fade";
 import { databases } from "../../localapi/databases.enum";
 import API_PATH from "../../localapi/localapi";
-import SpinningCircle from "../SpinningCircle/SpinningCircle";
 
 
 const References = () => {

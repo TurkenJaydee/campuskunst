@@ -24,7 +24,6 @@ const start = () => {
     const data = await fetch(API_PATH(databases.start));
     const resData = await data.json();
     setHomeContent(resData);
-    console.log(resData);
   };
 
   const onToggleEasyText = () => {

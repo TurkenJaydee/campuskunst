@@ -43,20 +43,6 @@ const ArtpieceDetail = ({ match }) => {
     }
   };
 
-  const getDataContent = (content) => {
-    if (content.length !== "") {
-      console.log(content.length);
-      return (
-        <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
-          {content}
-        </Typography>
-      );
-    } else {
-      console.log(content.length);
-      return <div aria-hidden="true"></div>;
-    }
-  };
-
   const useStyles = makeStyles((theme) => ({
     headerContainer: {
       position: "relative",
@@ -200,6 +186,7 @@ const ArtpieceDetail = ({ match }) => {
 
     formControl: {
       flexDirection: "column-reverse",
+      marginBottom: '1rem',
     },
 
     mapsWrapper: {
