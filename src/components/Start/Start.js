@@ -174,7 +174,7 @@ const start = () => {
         display: "block",
         marginLeft: "auto",
         marginRight: "auto",
-        width: "70%",
+        width: "90%",
       },
     },
   }));
