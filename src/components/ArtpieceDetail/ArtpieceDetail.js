@@ -44,14 +44,17 @@ const ArtpieceDetail = ({ match }) => {
   };
 
   const getDataContent = (content) => {
-    if (content.length > 0) {
+    if (content.length !== "") {
+      console.log(content.length);
       return (
         <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
           {content}
         </Typography>
       );
+    } else {
+      console.log(content.length);
+      return <div aria-hidden="true"></div>;
     }
-    return null;
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -228,14 +231,20 @@ const ArtpieceDetail = ({ match }) => {
             <Typography variant="h3" variantMapping={{ h3: "h1" }} className={classes.title}>
               {artpiece.name}
             </Typography>
-            {getDataContent(artpiece.subtitle)}
+
+            {artpiece.subtitle ? (
+              <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
+                {artpiece.subtitle}
+              </Typography>
+            ) : (
+              <div aria-hidden="true"></div>
+            )}
             <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
-              {artpiece.tags.split(",").map((tag, id) => {
+              {artpiece.tags.split(",").map((tag, index) => {
                 return (
-                  <Fragment>
+                  <Fragment key={index}>
                     <Chip
                       className={classes.chip}
-                      key={artpiece.tags.indexOf(tag)}
                       color="primary"
                       variant="default"
                       size="small"
@@ -254,7 +263,6 @@ const ArtpieceDetail = ({ match }) => {
               </Typography>
               {artpiece.artist}
             </div>
-
             <div className={classes.attribute}>
               <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
                 Datum
