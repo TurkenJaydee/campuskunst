@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItem from "@material-ui/core/ListItem";
 import BusinessRoundedIcon from "@material-ui/icons/BusinessRounded";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import Fade from "@material-ui/core/Fade";
@@ -98,14 +99,12 @@ const Links = () => {
                   {institutions.map((institutionsData, index) => {
                     if (institutions.length > 0) {
                       return (
-                        <li key={index}>
-                          <ListItemText className={classes.listItemText}>
-                            <BusinessRoundedIcon aria-hidden="true" />
-                            <a href={`${institutionsData.link}`} rel="noopener noreferrer">
-                              {institutionsData.name}
-                            </a>
-                          </ListItemText>
-                        </li>
+                        <ListItem className={classes.listItemText} key={index}>
+                          <BusinessRoundedIcon aria-hidden="true" />
+                          <a href={`${institutionsData.link}`} rel="noopener noreferrer">
+                            {institutionsData.name}
+                          </a>
+                        </ListItem>
                       );
                     } else {
                       return <SpinningCircle />;
@@ -125,14 +124,12 @@ const Links = () => {
                   {artists.map((artistsData, index) => {
                     if (artists.length > 0) {
                       return (
-                        <li key={index}>
-                          <ListItemText className={classes.listItemText}>
-                            <BusinessRoundedIcon aria-hidden="true" />
-                            <a href={`${artistsData.link}`} rel="noopener noreferrer">
-                              {artistsData.name}
-                            </a>
-                          </ListItemText>
-                        </li>
+                        <ListItem className={classes.listItemText} key={index}>
+                          <BusinessRoundedIcon aria-hidden="true" />
+                          <a href={`${artistsData.link}`} rel="noopener noreferrer">
+                            {artistsData.name}
+                          </a>
+                        </ListItem>
                       );
                     } else {
                       return <SpinningCircle />;
@@ -152,14 +149,12 @@ const Links = () => {
                   {furtherInfo.map((furtherInfoData, index) => {
                     if (furtherInfo.length > 0) {
                       return (
-                        <li key={index}>
-                          <ListItemText className={classes.listItemText}>
-                            <InfoOutlinedIcon aria-hidden="true" />
-                            <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
-                              {furtherInfoData.name}
-                            </a>
-                          </ListItemText>
-                        </li>
+                        <ListItem className={classes.listItemText} key={index}>
+                          <InfoOutlinedIcon aria-hidden="true" />
+                          <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
+                            {furtherInfoData.name}
+                          </a>
+                        </ListItem>
                       );
                     } else {
                       return <SpinningCircle />;
