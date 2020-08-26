@@ -43,12 +43,25 @@ const ArtpieceDetail = ({ match }) => {
     }
   };
 
+  const getDataContent = (content) => {
+    if (content.length > 0) {
+      return (
+        <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
+          {content}
+        </Typography>
+      );
+    }
+    return null;
+  };
+
   const useStyles = makeStyles((theme) => ({
     headerContainer: {
       position: "relative",
       textAlign: "center",
       marginTop: "3rem",
+    },
 
+    backgroundImage: {
       [theme.breakpoints.up("md")]: {
         "&::before": {
           position: "absolute",
@@ -156,13 +169,13 @@ const ArtpieceDetail = ({ match }) => {
 
     chip: {
       marginRight: "0.5rem",
-      color: 'white',
+      color: "white",
     },
 
     tagIcon: {
       display: "inline-block",
       verticalAlign: "bottom",
-      marginLeft: '0.5rem',
+      marginLeft: "0.5rem",
       color: "white",
     },
 
@@ -204,19 +217,19 @@ const ArtpieceDetail = ({ match }) => {
     return (
       <main>
         <div className={classes.headerContainer}>
-          <div className={classes.header}>
-            <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img>
-          </div>
+          <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
+            <div className={classes.header}>
+              <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img>
+            </div>
+          </span>
         </div>
         <Container className={classes.attributesWrapper} maxWidth="md">
           <div className={classes.attributeHeader}>
             <Typography variant="h3" variantMapping={{ h3: "h1" }} className={classes.title}>
               {artpiece.name}
             </Typography>
-            <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
-              {artpiece.subtitle}
-            </Typography>
-            <Typography variant="subtitle2" variantMapping={{ subtitle2: "h2" }} className={classes.tags}>
+            {getDataContent(artpiece.subtitle)}
+            <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
               {artpiece.tags.split(",").map((tag, id) => {
                 return (
                   <Fragment>

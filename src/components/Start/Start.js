@@ -185,7 +185,7 @@ const start = () => {
   if (homeContent.length > 0) {
     return (
       <Fragment>
-        <Fade in={true} timeout={1000}>
+        <Fade in={true} timeout={1500}>
           <Typography role="main" component={"span"}>
             <div className={`${classes.section} ${classes.art}`}>
               <Container maxWidth="md">
@@ -224,10 +224,9 @@ const start = () => {
                   </Grid>
                   <Grid item sm={12} md={6}>
                     <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
-                      <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
+                      <Typography variant="h2" variantMapping={{ h2: "span" }} display="inline" className={classes.keyword}>
                         PROGRAMM
                       </Typography>{" "}
-                      <br />
                       "KUNST IM UNIVERSITÄTSBEREICH"
                     </Typography>
                     <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(1) }}></Typography>
@@ -240,7 +239,7 @@ const start = () => {
                 <Grid container spacing={3} alignItems="center">
                   <Grid item sm={12} md={6}>
                     <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
-                      <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
+                      <Typography variant="h2" variantMapping={{ h2: "span" }} display="inline" className={classes.keyword}>
                         ZIELE{" "}
                       </Typography>{" "}
                       DES BREMER HOCHSCHULMODELLS
@@ -263,7 +262,7 @@ const start = () => {
                     <div>
                       <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                         ES GALTEN ZWEI{" "}
-                        <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
+                        <Typography variant="h2" variantMapping={{ h2: "span" }} display="inline" className={classes.keyword}>
                           PRÄMISSEN
                         </Typography>
                       </Typography>
@@ -279,14 +278,14 @@ const start = () => {
                   <Grid item sm={12} md={6}>
                   <Typography variant="h4" variantMapping={{ h4: "h2" }} className={classes.heading}>
                         AUSSTELLUNG{" "}
-                        <Typography variant="h2" variantMapping={{ h2: "p" }} display="inline" className={classes.keyword}>
+                        <Typography variant="h2" variantMapping={{ h2: "span" }} display="inline" className={classes.keyword}>
                           KUNST IM STADTBILD
                         </Typography>
                       </Typography>
                     <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(4) }}></Typography>
                   </Grid>
                   <Grid item sm={12} md={6}>
-                    <img className={classes.image} alt={getImageAlt(2)} src={`${process.env.PUBLIC_URL + `/img/${getImage(4)}`}`}></img>
+                    <img className={classes.image} alt={getImageAlt(4)} src={`${process.env.PUBLIC_URL + `/img/${getImage(4)}`}`}></img>
                   </Grid>
                 </Grid>
               </Container>
