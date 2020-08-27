@@ -49,7 +49,7 @@ const Filter = (
 
   return (
     <Fragment>
-      <div className={classes.root}>
+      <div className={classes.root} aria-label="Kategorien wählen">
         {TAGLIST.map((tag, index) => {
           return <Tag
             key={index}
@@ -75,7 +75,7 @@ const Filter = (
         onClick={toggleFilter}
         size="large"
       >
-        Filter
+        Filtern
       </Button>
 
     </Fragment>

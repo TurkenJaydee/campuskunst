@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Chip from "@material-ui/core/Chip";
+import { Helmet } from "react-helmet";
 
 const ArtpieceDetail = ({ match }) => {
   useEffect(() => {
@@ -178,7 +179,7 @@ const ArtpieceDetail = ({ match }) => {
       margin: "0 0 0.5rem 0",
       fontFamily: "Montserrat",
       fontWeight: 600,
-      padding: '0 6rem',
+      padding: "0 6rem",
     },
 
     description: {
@@ -219,103 +220,108 @@ const ArtpieceDetail = ({ match }) => {
 
   try {
     return (
-      <main>
-        <div className={classes.headerContainer}>
-          <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
-            <div className={classes.header}>
-              <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img>
-            </div>
-          </span>
-        </div>
-        <Container className={classes.attributesWrapper} maxWidth="md">
-          <div className={classes.attributeHeader}>
-            <Typography variant="h3" variantMapping={{ h3: "h1" }} className={classes.title}>
-              {artpiece.name}
-            </Typography>
+      <Fragment>
+        <Helmet>
+          <title>{artpiece.name}</title>
+        </Helmet>
+        <main>
+          <div className={classes.headerContainer}>
+            <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
+              <div className={classes.header}>
+                <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img>
+              </div>
+            </span>
+          </div>
+          <Container className={classes.attributesWrapper} maxWidth="md">
+            <div className={classes.attributeHeader}>
+              <Typography variant="h3" variantMapping={{ h3: "h1" }} className={classes.title}>
+                {artpiece.name}
+              </Typography>
 
-            {artpiece.subtitle ? (
-              <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
-                {artpiece.subtitle}
+              {artpiece.subtitle ? (
+                <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
+                  {artpiece.subtitle}
+                </Typography>
+              ) : (
+                <div aria-hidden="true"></div>
+              )}
+              <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
+                {artpiece.tags.split(",").map((tag, index) => {
+                  return (
+                    <Fragment key={index}>
+                      <Chip
+                        className={classes.chip}
+                        color="primary"
+                        variant="default"
+                        size="small"
+                        label={tag.trim()}
+                        icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
+                      />
+                    </Fragment>
+                  );
+                })}
               </Typography>
-            ) : (
-              <div aria-hidden="true"></div>
-            )}
-            <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
-              {artpiece.tags.split(",").map((tag, index) => {
-                return (
-                  <Fragment key={index}>
-                    <Chip
-                      className={classes.chip}
-                      color="primary"
-                      variant="default"
-                      size="small"
-                      label={tag.trim()}
-                      icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
-                    />
-                  </Fragment>
-                );
-              })}
-            </Typography>
-          </div>
-          <div className={classes.attributes}>
-            <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
-                KünstlerIn
-              </Typography>
-              {artpiece.artist}
             </div>
-            <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
-                Datum
-              </Typography>
-              {artpiece.date}
+            <div className={classes.attributes}>
+              <div className={classes.attribute}>
+                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                  KünstlerIn
+                </Typography>
+                {artpiece.artist}
+              </div>
+              <div className={classes.attribute}>
+                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                  Datum
+                </Typography>
+                {artpiece.date}
+              </div>
+              <div className={classes.attribute}>
+                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                  Größe
+                </Typography>
+                12x36cm
+              </div>
             </div>
-            <div className={classes.attribute}>
-              <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
-                Größe
-              </Typography>
-              12x36cm
-            </div>
-          </div>
-          <FormControlLabel
-            className={classes.formControl}
-            control={
-              <Switch
-                checked={toggleEasyText}
-                onChange={onToggleEasyText}
-                color="primary"
-                name="Einfache Sprache Button"
-                size="medium"
-                aria-label="Einfache Sprache ein und ausschalten"
-              />
-            }
-            label="Einfache Sprache"
-          />
-          <div className={classes.descriptionSection}>
-            <Typography className={classes.descriptionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
-              Beschreibung
-            </Typography>
-            <Typography
-              className={classes.description}
-              dangerouslySetInnerHTML={{ __html: getTextStyle() }}
-              variant="body2"
-              color="textSecondary"
-              component="p"
-            ></Typography>
-          </div>
-          <div className={classes.mapsWrapper}>
-            <Typography className={classes.mapsHeading} variant="h5" variantMapping={{ h5: "h2" }}>
-              Standort
-            </Typography>
-            <MapContainer
-              apiKey="GELOESCHTER_API_KEY"
-              lat={artpiece.location.split(",")[0]}
-              lng={artpiece.location.split(",")[1]}
-              name={artpiece.name}
+            <FormControlLabel
+              className={classes.formControl}
+              control={
+                <Switch
+                  checked={toggleEasyText}
+                  onChange={onToggleEasyText}
+                  color="primary"
+                  name="Einfache Sprache Button"
+                  size="medium"
+                  aria-label="Einfache Sprache ein und ausschalten"
+                />
+              }
+              label="Einfache Sprache"
             />
-          </div>
-        </Container>
-      </main>
+            <div className={classes.descriptionSection}>
+              <Typography className={classes.descriptionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+                Beschreibung
+              </Typography>
+              <Typography
+                className={classes.description}
+                dangerouslySetInnerHTML={{ __html: getTextStyle() }}
+                variant="body2"
+                color="textSecondary"
+                component="p"
+              ></Typography>
+            </div>
+            <div className={classes.mapsWrapper}>
+              <Typography className={classes.mapsHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+                Standort
+              </Typography>
+              <MapContainer
+                apiKey="GELOESCHTER_API_KEY"
+                lat={artpiece.location.split(",")[0]}
+                lng={artpiece.location.split(",")[1]}
+                name={artpiece.name}
+              />
+            </div>
+          </Container>
+        </main>
+      </Fragment>
     );
   } catch (e) {
     return (

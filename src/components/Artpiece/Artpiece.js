@@ -109,7 +109,7 @@ const artpiece = (props) => {
       <Fragment>
         <Card className={classes.card}>
           <CardActionArea className={classes.actionArea} tabIndex="-1">
-            <Link className={classes.link} to={`/kunstwerke/${props.name.replace("/", "-")}`}>
+            <Link className={classes.link} to={`/kunstwerke/${props.name.replace("/", "-")}`} title={props.name.replace("/", "-")}>
               <div>
                 <CardMedia component="img" image={imageEmpty(props.image)} title={props.name} height="300" alt={props.alt}></CardMedia>
                 <CardContent className={classes.firstChild}>

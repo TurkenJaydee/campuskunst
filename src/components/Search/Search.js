@@ -37,38 +37,40 @@ const Search = ({
 
   return (
     <Fragment>
-      <Container maxWidth="md" className={classes.searchBarContainer}>
-        <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
-          Suchfeld
-        </FormLabel>
-        <TextField
-          id="Suchfeld"
-          placeholder="Kunstwerkname"
-          type="search"
-          variant="outlined"
-          className={classes.searchBar}
-          fullWidth
-          aria-label="Suchfeld"
-          value={searchValue}
-          onChange={handleSearchInputChanges}
-          onKeyPress={e => toogleFilterOnEnter(e)}
-          InputLabelProps={{
-            shrink: false,
-          }}
-        />
-      </Container>
-      <Container>
-        <Filter
-          tag={tags}
-          setTags={setTags}
-          value={value}
-          valuetext={valuetext}
-          onChange={onChange}
-          min={min}
-          max={max}
-          toggleFilter={toggleFilter}
-        />
-      </Container>
+      <fieldset role="group" style={{border: '0'}}>
+        <Container maxWidth="md" className={classes.searchBarContainer}>
+          <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
+            Suchfeld
+          </FormLabel>
+          <TextField
+            id="Suchfeld"
+            placeholder="Kunstwerkname"
+            type="search"
+            variant="outlined"
+            className={classes.searchBar}
+            fullWidth
+            aria-label="Suchfeld"
+            value={searchValue}
+            onChange={handleSearchInputChanges}
+            onKeyPress={(e) => toogleFilterOnEnter(e)}
+            InputLabelProps={{
+              shrink: false,
+            }}
+          />
+        </Container>
+        <Container>
+          <Filter
+            tag={tags}
+            setTags={setTags}
+            value={value}
+            valuetext={valuetext}
+            onChange={onChange}
+            min={min}
+            max={max}
+            toggleFilter={toggleFilter}
+          />
+        </Container>
+      </fieldset>
     </Fragment>
   );
 };

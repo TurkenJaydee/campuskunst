@@ -9,6 +9,7 @@ import { Typography } from "@material-ui/core";
 import API_PATH from "../../localapi/localapi";
 import { databases } from "../../localapi/databases.enum";
 import SpinningCircle from "../SpinningCircle/SpinningCircle";
+import { Helmet } from "react-helmet";
 
 const useStyles = makeStyles((theme) => ({
   mainHeading: {
@@ -112,6 +113,9 @@ const artpieces = () => {
   if (artpieces.length > 0) {
     return (
       <Fragment>
+        <Helmet>
+          <title>Kunstwerke</title>
+        </Helmet>
         <Fade in={true} timeout={1500}>
           <Container maxWidth="lg" role="main">
             <Grid container spacing={4}>

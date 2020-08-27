@@ -46,6 +46,7 @@
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^3.0.2",
     "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
     "react-image": "^2.2.2",
     "react-image-appear": "^1.2.22",
     "react-inlinesvg": "^1.2.0",

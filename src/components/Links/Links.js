@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,6 +13,7 @@ import Fade from "@material-ui/core/Fade";
 import { databases } from "../../localapi/databases.enum";
 import API_PATH from "../../localapi/localapi";
 import SpinningCircle from "../SpinningCircle/SpinningCircle";
+import { Helmet } from "react-helmet";
 
 const Links = () => {
   const [artists, setArtists] = useState([]);
@@ -85,88 +86,93 @@ const Links = () => {
   const classes = useStyles();
 
   return (
-    <Fade in={true} timeout={1000}>
-      <Container className={classes.main} justify="true" role="main">
-        <h1>Links</h1>
-        <Grid container spacing={6}>
-          <Grid className={classes.item} item xs={12} md={4} sm={6}>
-            <Paper elevation={3} className={classes.paper}>
-              <Typography component={"span"} className={classes.content}>
-                <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
-                  Institutionen
+    <Fragment>
+      <Helmet>
+        <title>Kunstwerke</title>
+      </Helmet>
+      <Fade in={true} timeout={1000}>
+        <Container className={classes.main} justify="true" role="main">
+          <h1>Links</h1>
+          <Grid container spacing={6}>
+            <Grid className={classes.item} item xs={12} md={4} sm={6}>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography component={"span"} className={classes.content}>
+                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                    Institutionen
+                  </Typography>
+                  <List className={classes.list}>
+                    {institutions.map((institutionsData, index) => {
+                      if (institutions.length > 0) {
+                        return (
+                          <ListItem className={classes.listItemText} key={index}>
+                            <BusinessRoundedIcon aria-hidden="true" />
+                            <a href={`${institutionsData.link}`} rel="noopener noreferrer">
+                              {institutionsData.name}
+                            </a>
+                          </ListItem>
+                        );
+                      } else {
+                        return <SpinningCircle />;
+                      }
+                    })}
+                  </List>
                 </Typography>
-                <List className={classes.list}>
-                  {institutions.map((institutionsData, index) => {
-                    if (institutions.length > 0) {
-                      return (
-                        <ListItem className={classes.listItemText} key={index}>
-                          <BusinessRoundedIcon aria-hidden="true" />
-                          <a href={`${institutionsData.link}`} rel="noopener noreferrer">
-                            {institutionsData.name}
-                          </a>
-                        </ListItem>
-                      );
-                    } else {
-                      return <SpinningCircle />;
-                    }
-                  })}
-                </List>
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid className={classes.item} item xs={12} md={4} sm={6}>
-            <Paper elevation={3} className={classes.paper}>
-              <Typography component={"span"} className={classes.content}>
-                <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
-                  KünstlerInnen
+              </Paper>
+            </Grid>
+            <Grid className={classes.item} item xs={12} md={4} sm={6}>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography component={"span"} className={classes.content}>
+                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                    KünstlerInnen
+                  </Typography>
+                  <List className={classes.list}>
+                    {artists.map((artistsData, index) => {
+                      if (artists.length > 0) {
+                        return (
+                          <ListItem className={classes.listItemText} key={index}>
+                            <BusinessRoundedIcon aria-hidden="true" />
+                            <a href={`${artistsData.link}`} rel="noopener noreferrer">
+                              {artistsData.name}
+                            </a>
+                          </ListItem>
+                        );
+                      } else {
+                        return <SpinningCircle />;
+                      }
+                    })}
+                  </List>
                 </Typography>
-                <List className={classes.list}>
-                  {artists.map((artistsData, index) => {
-                    if (artists.length > 0) {
-                      return (
-                        <ListItem className={classes.listItemText} key={index}>
-                          <BusinessRoundedIcon aria-hidden="true" />
-                          <a href={`${artistsData.link}`} rel="noopener noreferrer">
-                            {artistsData.name}
-                          </a>
-                        </ListItem>
-                      );
-                    } else {
-                      return <SpinningCircle />;
-                    }
-                  })}
-                </List>
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid className={classes.item} item xs={12} sm={4}>
-            <Paper elevation={3} className={classes.paper}>
-              <Typography component={"span"} className={classes.content}>
-                <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
-                  Weiterführende Online-Informationen
+              </Paper>
+            </Grid>
+            <Grid className={classes.item} item xs={12} sm={4}>
+              <Paper elevation={3} className={classes.paper}>
+                <Typography component={"span"} className={classes.content}>
+                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                    Weiterführende Online-Informationen
+                  </Typography>
+                  <List className={classes.list}>
+                    {furtherInfo.map((furtherInfoData, index) => {
+                      if (furtherInfo.length > 0) {
+                        return (
+                          <ListItem className={classes.listItemText} key={index}>
+                            <InfoOutlinedIcon aria-hidden="true" />
+                            <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
+                              {furtherInfoData.name}
+                            </a>
+                          </ListItem>
+                        );
+                      } else {
+                        return <SpinningCircle />;
+                      }
+                    })}
+                  </List>
                 </Typography>
-                <List className={classes.list}>
-                  {furtherInfo.map((furtherInfoData, index) => {
-                    if (furtherInfo.length > 0) {
-                      return (
-                        <ListItem className={classes.listItemText} key={index}>
-                          <InfoOutlinedIcon aria-hidden="true" />
-                          <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
-                            {furtherInfoData.name}
-                          </a>
-                        </ListItem>
-                      );
-                    } else {
-                      return <SpinningCircle />;
-                    }
-                  })}
-                </List>
-              </Typography>
-            </Paper>
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Fade>
+        </Container>
+      </Fade>
+    </Fragment>
   );
 };
 

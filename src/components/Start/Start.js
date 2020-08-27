@@ -10,6 +10,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import API_PATH from '../../localapi/localapi';
 import {databases} from '../../localapi/databases.enum';
 import SpinningCircle from "../SpinningCircle/SpinningCircle";
+import { Helmet } from "react-helmet";
 
 const start = () => {
   const [homeContent, setHomeContent] = useState([{}]);
@@ -60,11 +61,6 @@ const start = () => {
 
   const useStyles = makeStyles((theme) => ({
     content: {
-      margin: "1rem",
-      marginLeft: "auto",
-      marginRight: "auto",
-      width: toggleEasyText ? "70%" : "100%",
-
       [theme.breakpoints.down("sm")]: {
         padding: "0 1rem 0 1rem",
         textAlign: 'left',
@@ -73,6 +69,13 @@ const start = () => {
       "& span": {
         fontWeight: "bold",
       },
+    },
+
+    firstContent: {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      width: toggleEasyText ? "80%" : "100%",
+
     },
 
     section: {
@@ -184,6 +187,9 @@ const start = () => {
   if (homeContent.length > 0) {
     return (
       <Fragment>
+        <Helmet>
+          <title>Start</title>
+        </Helmet>
         <Fade in={true} timeout={1500}>
           <Typography role="main" component={"span"}>
             <div className={`${classes.section} ${classes.art}`}>
@@ -212,7 +218,7 @@ const start = () => {
                 <PaletteIconOutlinedIcon aria-hidden="true" />
                 <PaletteIconOutlinedIcon aria-hidden="true" />
                 <PaletteIconOutlinedIcon aria-hidden="true" />
-                <Typography variant="body1" className={classes.content} dangerouslySetInnerHTML={{ __html: getTextStyle(0) }}></Typography>
+                <Typography variant="body1" className={`${classes.content} ${classes.firstContent}`} dangerouslySetInnerHTML={{ __html: getTextStyle(0) }}></Typography>
               </Container>
             </div>
             <div className={`${classes.section} ${classes.program}`}>

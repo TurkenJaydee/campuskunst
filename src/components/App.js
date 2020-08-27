@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import SideDrawer from "./SideDrawer/SideDrawer";
 import Toolbar from "./Toolbar/Toolbar";
 import Backdrop from "./Backdrop/Backdrop";
+import { Helmet } from "react-helmet";
 
 const App = () => {
   const [sideDrawerOpen, setSideDrawer] = useState(false);
@@ -114,6 +115,9 @@ const App = () => {
 
   return (
     <div style={{ height: "100%", overflow: "hidden" }}>
+      <Helmet>
+          <title>campuskunst</title>
+        </Helmet>
       <ThemeProvider theme={theme}>
         <Fragment>
           <CssBaseline />
