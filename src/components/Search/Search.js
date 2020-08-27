@@ -8,6 +8,14 @@ import { FormLabel } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   searchBar: {
     marginBottom: "1rem",
+
+    '& .MuiOutlinedInput-input': {
+      padding: '1rem 0.8rem',
+
+      [theme.breakpoints.down("sm")]: {
+        padding: '0.8rem 0.5rem',
+      },
+    }
   },
   searchBarContainer: {
     display: "flex",
@@ -37,40 +45,38 @@ const Search = ({
 
   return (
     <Fragment>
-      <fieldset role="group" style={{border: '0'}}>
-        <Container maxWidth="md" className={classes.searchBarContainer}>
-          <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
-            Suchfeld
-          </FormLabel>
-          <TextField
-            id="Suchfeld"
-            placeholder="Kunstwerkname"
-            type="search"
-            variant="outlined"
-            className={classes.searchBar}
-            fullWidth
-            aria-label="Suchfeld"
-            value={searchValue}
-            onChange={handleSearchInputChanges}
-            onKeyPress={(e) => toogleFilterOnEnter(e)}
-            InputLabelProps={{
-              shrink: false,
-            }}
-          />
-        </Container>
-        <Container>
-          <Filter
-            tag={tags}
-            setTags={setTags}
-            value={value}
-            valuetext={valuetext}
-            onChange={onChange}
-            min={min}
-            max={max}
-            toggleFilter={toggleFilter}
-          />
-        </Container>
-      </fieldset>
+      <Container maxWidth="md" className={classes.searchBarContainer}>
+        <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
+          Suchfeld
+        </FormLabel>
+        <TextField
+          id="Suchfeld"
+          placeholder="Kunstwerkname"
+          type="search"
+          variant="outlined"
+          className={classes.searchBar}
+          fullWidth
+          aria-label="Suchfeld"
+          value={searchValue}
+          onChange={handleSearchInputChanges}
+          onKeyPress={(e) => toogleFilterOnEnter(e)}
+          InputLabelProps={{
+            shrink: false,
+          }}
+        />
+      </Container>
+      <Container>
+        <Filter
+          tag={tags}
+          setTags={setTags}
+          value={value}
+          valuetext={valuetext}
+          onChange={onChange}
+          min={min}
+          max={max}
+          toggleFilter={toggleFilter}
+        />
+      </Container>
     </Fragment>
   );
 };

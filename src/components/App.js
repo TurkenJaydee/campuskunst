@@ -51,7 +51,16 @@ const App = () => {
       },
 
       h1: {
-        fontSize: calcFontSize(2.5),
+        fontSize: calcFontSize(1.5),
+
+        "@media (min-width:600px)": {
+          fontSize: calcFontSize(2),
+        },
+
+        "@media (min-width:960px)": {
+          fontSize: calcFontSize(2.5),
+        },
+
       },
 
       h2: {
@@ -85,7 +94,7 @@ const App = () => {
     overrides: {
       MuiOutlinedInput: {
         root: {
-          fontSize: calcFontSize(1.5),
+          fontSize: calcFontSize(1.3),
         },
       },
     },

@@ -2,10 +2,12 @@ import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "500px",
+    width: "auto",
+    maxWidth: '600px',
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "2rem",
@@ -65,7 +67,7 @@ const SliderBar = (props) => {
 
   return (
     <Fragment>
-      <div className={classes.root} id="jahres-slider">
+      <Container className={classes.root} maxWidth="lg" id="jahres-slider">
         <Typography aria-label="Slider Überschrift" gutterBottom>
           Zeitraum
         </Typography>
@@ -79,7 +81,7 @@ const SliderBar = (props) => {
           max={props.max}
           step={5}
         />
-      </div>
+      </Container>
     </Fragment>
   );
 };
