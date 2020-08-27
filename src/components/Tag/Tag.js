@@ -18,16 +18,12 @@ const Tag = (props) => {
 
   const useStyles = makeStyles((theme) => ({
     chip: {
-        height: '2.5rem',
         borderRadius: '1000px',
         fontWeight: '600',
-        fontSize: '1rem',
     },
     chipDelete: {
-        height: '2.5rem',
         borderRadius: '1000px',
         fontWeight: '600',
-        fontSize: '1rem',
     },
   }));
 

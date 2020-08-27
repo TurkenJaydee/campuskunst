@@ -97,10 +97,27 @@ const App = () => {
           fontSize: calcFontSize(1.3),
         },
       },
-    },
 
-    ".MuiOutlinedInput-root": {
-      fontSize: "10rem",
+      MuiButton: {
+        containedSizeLarge: {
+          fontSize: calcFontSize(0.9),
+        }
+      },
+      MuiChip: {
+        root: {
+          fontSize: calcFontSize(0.8125),
+        },
+
+        sizeSmall: {
+          height: calcFontSize(1.5),
+          borderRadius: '100rem',
+        },
+
+        outlined: {
+          fontSize: calcFontSize(1),
+          height: calcFontSize(2.5),
+        }
+      }
     },
   });
 
