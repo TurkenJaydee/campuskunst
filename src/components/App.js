@@ -4,7 +4,7 @@ import Footer from "./Footer/Footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import SideDrawer from "./SideDrawer/SideDrawer";
+import NewSideDrawer from "./NewSideDrawer/NewSideDrawer";
 import Toolbar from "./Toolbar/Toolbar";
 import Backdrop from "./Backdrop/Backdrop";
 import { Helmet } from "react-helmet";
@@ -19,6 +19,11 @@ const App = () => {
   };
 
   const theme = createMuiTheme({
+
+    /* palette: {
+      type: 'dark',
+    }, */
+
     typography: {
       fontFamily: ["Muli", "Montserrat", "Helvetica Neue", "sans-serif"].join(","),
 
@@ -92,6 +97,24 @@ const App = () => {
     },
 
     overrides: {
+
+      MuiDrawer: {
+        paper: {
+
+          "@media (max-width:599px)": {
+            width: '12rem',
+          },
+
+          "@media (min-width:600px)": {
+            width: '16rem',
+          },
+
+          "@media (min-width:960px)": {
+            width: '20rem',
+          },
+        },
+      },
+
       MuiOutlinedInput: {
         root: {
           fontSize: calcFontSize(1.3),
@@ -116,31 +139,24 @@ const App = () => {
         outlined: {
           fontSize: calcFontSize(1),
           height: calcFontSize(2.5),
-        }
+        },
+
+        clickable: {
+          fontSize: calcFontSize(1),
+          height: calcFontSize(2.5),
+        },
       }
     },
   });
 
   const drawerToggleClickHandler = () => {
-    setSideDrawer((prevSideDrawer) => !prevSideDrawer);
+    setSideDrawer(!sideDrawerOpen);
+    
   };
-
-  const backdropClickHandler = () => {
-    setSideDrawer((prevSideDrawer) => !prevSideDrawer);
-  };
-
-  function toggleDrawer() {
-    if (sideDrawerOpen) {
-      return (
-        <Fragment>
-          <Backdrop click={backdropClickHandler} />
-        </Fragment>
-      );
-    }
-  }
 
   return (
     <div style={{ height: "100%", overflow: "hidden" }}>
+      {console.log(sideDrawerOpen)}
       <Helmet>
           <title>campuskunst</title>
         </Helmet>
@@ -151,8 +167,7 @@ const App = () => {
             <Fragment>
               <Toolbar role="navigation" drawerClickHandler={drawerToggleClickHandler} setFontSize={(e) => setFontSize(e)} />
             </Fragment>
-            {toggleDrawer()}
-            <SideDrawer show={sideDrawerOpen} />
+            <NewSideDrawer show={sideDrawerOpen} close={drawerToggleClickHandler} />
           </Router>
           <Footer />
         </Fragment>
