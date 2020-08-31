@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
-import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 import BusinessRoundedIcon from "@material-ui/icons/BusinessRounded";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";

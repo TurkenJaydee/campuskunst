@@ -4,9 +4,8 @@ import Footer from "./Footer/Footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import NewSideDrawer from "./NewSideDrawer/NewSideDrawer";
+import SideDrawer from "./SideDrawer/SideDrawer";
 import Toolbar from "./Toolbar/Toolbar";
-import Backdrop from "./Backdrop/Backdrop";
 import { Helmet } from "react-helmet";
 
 const App = () => {
@@ -156,7 +155,6 @@ const App = () => {
 
   return (
     <div style={{ height: "100%", overflow: "hidden" }}>
-      {console.log(sideDrawerOpen)}
       <Helmet>
           <title>campuskunst</title>
         </Helmet>
@@ -167,7 +165,7 @@ const App = () => {
             <Fragment>
               <Toolbar role="navigation" drawerClickHandler={drawerToggleClickHandler} setFontSize={(e) => setFontSize(e)} />
             </Fragment>
-            <NewSideDrawer show={sideDrawerOpen} close={drawerToggleClickHandler} />
+            <SideDrawer show={sideDrawerOpen} close={drawerToggleClickHandler} />
           </Router>
           <Footer />
         </Fragment>

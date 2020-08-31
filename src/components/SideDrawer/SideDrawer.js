@@ -1,30 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-import List from "@material-ui/core/List";
 import PaletteIcon from "@material-ui/icons/Palette";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import LinkIcon from "@material-ui/icons/Link";
 
-const useStyles = makeStyles({
-  sideDrawer: (props) => ({
-    height: "100%",
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 255, 255)",
-    boxShadow: "1px 0px 7px rgba(0, 0, 0, 0.5)",
-    position: "fixed",
-    top: "0",
-    left: "100%",
-    width: "70%",
-    maxWidth: "400px",
-    zIndex: "200",
-    transform: `translateX(${props.show ? "-80%" : "0"})`,
-    transition: "transform 0.3s ease-out",
-
+const useStyles = makeStyles((theme) => ({
+  sideDrawer: {
     "& ul": {
       listStyle: "none",
       display: "flex",
@@ -51,74 +39,80 @@ const useStyles = makeStyles({
         },
       },
     },
-  }),
-});
+  },
+}));
 
-const sideDrawer = (props) => {
+const SideDrawer = (props) => {
   const classes = useStyles(props);
 
   return (
-    <nav className={classes.sideDrawer} aria-label="navigation">
-      <List>
-        <li>
-          <ListItem button tabIndex="-1">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Link className={classes.navLink} to="/">
-                  Start
-                </Link>
-              }
-            />
-          </ListItem>
-        </li>
-        <li tabIndex="-1">
-          <ListItem button tabIndex="-1">
-            <ListItemIcon>
-              <PaletteIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Link className={classes.navLink} to="/kunstwerke">
-                  Kunstwerke
-                </Link>
-              }
-            />
-          </ListItem>
-        </li>
-        <li>
-          <ListItem button tabIndex="-1">
-            <ListItemIcon>
-              <LocalLibraryIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Link className={classes.navLink} to="/referenzen">
-                  Referenzen
-                </Link>
-              }
-            />
-          </ListItem>
-        </li>
-        <li tabIndex="-1">
-          <ListItem button tabIndex="-1">
-            <ListItemIcon>
-              <LinkIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Link className={classes.navLink} to="/links">
-                  Links
-                </Link>
-              }
-            />
-          </ListItem>
-        </li>
-      </List>
-    </nav>
+    <Fragment>
+      <Drawer className={classes.sideDrawer} anchor={"right"} open={props.show} onClose={props.close}>
+        <div className={classes.list} role="presentation">
+          <nav aria-label="navigation">
+            <List>
+              <li>
+                <ListItem button tabIndex="-1">
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Link className={classes.navLink} to="/">
+                        Start
+                      </Link>
+                    }
+                  />
+                </ListItem>
+              </li>
+              <li tabIndex="-1">
+                <ListItem button tabIndex="-1">
+                  <ListItemIcon>
+                    <PaletteIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Link className={classes.navLink} to="/kunstwerke">
+                        Kunstwerke
+                      </Link>
+                    }
+                  />
+                </ListItem>
+              </li>
+              <li>
+                <ListItem button tabIndex="-1">
+                  <ListItemIcon>
+                    <LocalLibraryIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Link className={classes.navLink} to="/referenzen">
+                        Referenzen
+                      </Link>
+                    }
+                  />
+                </ListItem>
+              </li>
+              <li tabIndex="-1">
+                <ListItem button tabIndex="-1">
+                  <ListItemIcon>
+                    <LinkIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Link className={classes.navLink} to="/links">
+                        Links
+                      </Link>
+                    }
+                  />
+                </ListItem>
+              </li>
+            </List>
+          </nav>
+        </div>
+      </Drawer>
+    </Fragment>
   );
 };
 
-export default sideDrawer;
+export default SideDrawer;
