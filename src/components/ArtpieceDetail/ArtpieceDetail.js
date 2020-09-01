@@ -175,11 +175,15 @@ const ArtpieceDetail = ({ match }) => {
       fontWeight: 600,
     },
 
-    descriptionHeading: {
+    sectionHeading: {
       margin: "0 0 0.5rem 0",
       fontFamily: "Montserrat",
       fontWeight: 600,
       padding: "0 6rem",
+
+      [theme.breakpoints.down("xs")]: {
+        padding: "0 2rem",
+      },
     },
 
     description: {
@@ -195,13 +199,6 @@ const ArtpieceDetail = ({ match }) => {
     formControl: {
       flexDirection: "column-reverse",
       marginBottom: "1rem",
-    },
-
-    mapsHeading: {
-      margin: "0 0 0.5rem 0",
-      fontFamily: "Montserrat",
-      fontWeight: 600,
-      padding: "0 6rem",
     },
 
     mapsWrapper: {
@@ -297,7 +294,7 @@ const ArtpieceDetail = ({ match }) => {
               label="Einfache Sprache"
             />
             <div className={classes.descriptionSection}>
-              <Typography className={classes.descriptionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+              <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
                 Beschreibung
               </Typography>
               <Typography
@@ -309,7 +306,7 @@ const ArtpieceDetail = ({ match }) => {
               ></Typography>
             </div>
             <div className={classes.mapsWrapper}>
-              <Typography className={classes.mapsHeading} variant="h5" variantMapping={{ h5: "h2" }}>
+              <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
                 Standort
               </Typography>
               <MapContainer
