@@ -31,6 +31,7 @@ const artpiece = (props) => {
 
     chip: {
       marginRight: "0.5rem",
+      marginBottom: '0.5rem',
 
       "&:hover": {
           cursor: 'pointer',

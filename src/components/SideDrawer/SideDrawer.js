@@ -52,7 +52,7 @@ const SideDrawer = (props) => {
           <nav aria-label="navigation">
             <List>
               <li>
-                <ListItem button tabIndex="-1">
+                <ListItem button tabIndex="-1" onClick={props.closeOnClick}>
                   <ListItemIcon>
                     <HomeIcon />
                   </ListItemIcon>
@@ -66,7 +66,7 @@ const SideDrawer = (props) => {
                 </ListItem>
               </li>
               <li tabIndex="-1">
-                <ListItem button tabIndex="-1">
+                <ListItem button tabIndex="-1" onClick={props.closeOnClick}>
                   <ListItemIcon>
                     <PaletteIcon />
                   </ListItemIcon>
@@ -80,7 +80,7 @@ const SideDrawer = (props) => {
                 </ListItem>
               </li>
               <li>
-                <ListItem button tabIndex="-1">
+                <ListItem button tabIndex="-1" onClick={props.closeOnClick}>
                   <ListItemIcon>
                     <LocalLibraryIcon />
                   </ListItemIcon>
@@ -94,7 +94,7 @@ const SideDrawer = (props) => {
                 </ListItem>
               </li>
               <li tabIndex="-1">
-                <ListItem button tabIndex="-1">
+                <ListItem button tabIndex="-1" onClick={props.closeOnClick}>
                   <ListItemIcon>
                     <LinkIcon />
                   </ListItemIcon>

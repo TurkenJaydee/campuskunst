@@ -150,7 +150,10 @@ const App = () => {
 
   const drawerToggleClickHandler = () => {
     setSideDrawer(!sideDrawerOpen);
-    
+  };
+
+  const drawerCloseHandler = () => {
+    setSideDrawer(false);
   };
 
   return (
@@ -165,7 +168,7 @@ const App = () => {
             <Fragment>
               <Toolbar role="navigation" drawerClickHandler={drawerToggleClickHandler} setFontSize={(e) => setFontSize(e)} />
             </Fragment>
-            <SideDrawer show={sideDrawerOpen} close={drawerToggleClickHandler} />
+            <SideDrawer show={sideDrawerOpen} close={drawerToggleClickHandler} closeOnClick={drawerCloseHandler}/>
           </Router>
           <Footer />
         </Fragment>
