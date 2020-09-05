@@ -54,8 +54,9 @@ const artpieces = () => {
   const [tags, setTags] = useState([]);
   const [sliderValue, setSliderValue] = React.useState([1900, 2020]);
 
+  window.scrollTo(0, 0);
+
   const fetchData = async () => {
-    window.scrollTo(0, 0);
     const res = await fetch(API_PATH(databases.artpieces));
     const resData = await res.json();
     setArtpieces(resData);

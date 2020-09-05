@@ -12,8 +12,8 @@ import Chip from "@material-ui/core/Chip";
 import { Helmet } from "react-helmet";
 
 const ArtpieceDetail = ({ match }) => {
+  window.scrollTo(0, 0);
   useEffect(() => {
-    window.scrollTo(0, 0);
     fetchArtpiece();
   }, []);
 
