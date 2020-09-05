@@ -12,8 +12,8 @@ import Chip from "@material-ui/core/Chip";
 import { Helmet } from "react-helmet";
 
 const ArtpieceDetail = ({ match }) => {
-  window.scrollTo(0, 0);
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchArtpiece();
   }, []);
 
@@ -192,7 +192,7 @@ const ArtpieceDetail = ({ match }) => {
       fontFamily: "Montserrat",
 
       [theme.breakpoints.down("xs")]: {
-        padding: "0 2rem",
+        padding: "0 1rem",
       },
     },
 
@@ -204,7 +204,7 @@ const ArtpieceDetail = ({ match }) => {
     mapsWrapper: {
       position: "relative",
       width: "100%",
-      height: "100%",
+      height: "30rem",
       marginTop: "4rem",
     },
 
@@ -309,12 +309,14 @@ const ArtpieceDetail = ({ match }) => {
               <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
                 Standort
               </Typography>
-              <MapContainer
-                apiKey="GELOESCHTER_API_KEY"
-                lat={artpiece.location.split(",")[0]}
-                lng={artpiece.location.split(",")[1]}
-                name={artpiece.name}
-              />
+              <div className={classes.mapContainer}>
+                <MapContainer
+                  apiKey="GELOESCHTER_API_KEY"
+                  lat={artpiece.location.split(",")[0]}
+                  lng={artpiece.location.split(",")[1]}
+                  name={artpiece.name}
+                />
+              </div>
             </div>
           </Container>
         </main>
