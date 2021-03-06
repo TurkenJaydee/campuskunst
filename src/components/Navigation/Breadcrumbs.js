@@ -44,7 +44,7 @@ const Breadcrumbs = ({ crumbs }) => {
             </Typography>
           ) : (
               <Link key={key} href={path} color="textPrimary" aria-current="page">
-                <Typography color="textPrimary" variant="h5" variantMapping={{ h5: "a" }}>
+                <Typography color="textPrimary" variant="h5" variantMapping={{ h5: "span" }}>
                   {name}
                 </Typography>
               </Link>

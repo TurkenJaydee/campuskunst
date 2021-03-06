@@ -15,9 +15,11 @@ const ArtpieceDetail = ({ match }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchArtpiece();
+    fetchMapsApiKey();
   }, []);
 
   const [artpiece, setArtpiece] = useState({});
+  const [mapsApiKey, setMapsApiKey] = useState('');
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
   const fetchArtpiece = async () => {
@@ -26,6 +28,12 @@ const ArtpieceDetail = ({ match }) => {
 
     var contains = artpiece.filter((artpiece) => artpiece.name.replace("-", "/") === match.params.name.replace("-", "/"))[0];
     setArtpiece(contains);
+  };
+
+  const fetchMapsApiKey = async () => {
+    const data = await fetch(API_PATH("mapsapikey"));
+    const mapsapikey = await data.json();
+    setMapsApiKey(mapsapikey[0].mapsApiKey);
   };
 
   const onToggleEasyText = () => {
@@ -311,7 +319,7 @@ const ArtpieceDetail = ({ match }) => {
               </Typography>
               <div className={classes.mapContainer}>
                 <MapContainer
-                  apiKey="GELOESCHTER_API_KEY"
+                  apiKey={mapsApiKey}
                   lat={artpiece.location.split(",")[0]}
                   lng={artpiece.location.split(",")[1]}
                   name={artpiece.name}

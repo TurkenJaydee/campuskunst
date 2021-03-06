@@ -30,6 +30,10 @@ const API_PATH = (db) => {
   if (db === "sources") {
     return onLocal ? `http://localhost:50` : `../api/index_sources.php`;
   }
+
+  if (db === "mapsapikey") {
+    return onLocal ? `http://localhost:40` : `../api/index_mapsapikey.php`;
+  }
 };
 
 export default API_PATH;
