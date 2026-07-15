@@ -1,38 +1,40 @@
+import {databases} from './databases.enum';
+
 let onLocal = false;
 
 const API_PATH = (db) => {
   process.env.NODE_ENV !== "production" ? onLocal = true : onLocal = false;
     
-  if (db === "start") {
-    return onLocal ? `http://localhost:8080` : `../api/index_home.php`;
+  if (db === databases.start) {
+    return onLocal ? `http://localhost/campuskunst/api/index_home.php` : `../api/index_home.php`;
   }
 
-  if (db === "artpieces") {
-    return onLocal ? `http://localhost:80` : `../api/index_artpieces.php`;
+  if (db === databases.artpieces) {
+    return onLocal ? `http://localhost/campuskunst/api/index_artpieces.php` : `../api/index_artpieces.php`;
   }
 
-  if (db === "artists") {
-    return onLocal ? `http://localhost:10` : `../api/index_artists.php`;
+  if (db === databases.artists) {
+    return onLocal ? `http://localhost/campuskunst/api/index_artists.php` : `../api/index_artists.php`;
   }
 
-  if (db === "institutions") {
-    return onLocal ? `http://localhost:60` : `../api/index_institutions.php`;
+  if (db === databases.institutions) {
+    return onLocal ? `http://localhost/campuskunst/api/index_institutions.php` : `../api/index_institutions.php`;
   }
 
-  if (db === "furtherInfo") {
-    return onLocal ? `http://localhost:70` : `../api/index_furtherInfo.php`;
+  if (db === databases.furtherInfo) {
+    return onLocal ? `http://localhost/campuskunst/api/index_furtherInfo.php` : `../api/index_furtherInfo.php`;
   }
 
-  if (db === "literature") {
-    return onLocal ? `http://localhost:90` : `../api/index_literature.php`;
+  if (db === databases.literature) {
+    return onLocal ? `http://localhost/campuskunst/api/index_literature.php` : `../api/index_literature.php`;
   }
 
-  if (db === "sources") {
-    return onLocal ? `http://localhost:50` : `../api/index_sources.php`;
+  if (db === databases.sources) {
+    return onLocal ? `http://localhost/campuskunst/api/index_sources.php` : `../api/index_sources.php`;
   }
 
-  if (db === "mapsapikey") {
-    return onLocal ? `http://localhost:40` : `../api/index_mapsapikey.php`;
+  if (db === databases.mapsapikey) {
+    return onLocal ? `http://localhost/campuskunst/api/index_mapsapikey.php` : `../api/index_mapsapikey.php`;
   }
 };
 
