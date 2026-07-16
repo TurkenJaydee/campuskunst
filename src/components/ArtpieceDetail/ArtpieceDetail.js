@@ -9,12 +9,12 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Chip from "@material-ui/core/Chip";
 import { Helmet } from "react-helmet";
+import SimpleMap from '../map/map';
 
 const ArtpieceDetail = ({ match }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchArtpiece();
-    fetchMapsApiKey();
   }, []);
 
   const [artpiece, setArtpiece] = useState({});
@@ -27,12 +27,6 @@ const ArtpieceDetail = ({ match }) => {
 
     var contains = artpiece.filter((artpiece) => artpiece.name.replace("-", "/") === match.params.name.replace("-", "/"))[0];
     setArtpiece(contains);
-  };
-
-  const fetchMapsApiKey = async () => {
-    const data = await fetch(API_PATH("mapsapikey"));
-    const mapsapikey = await data.json();
-    setMapsApiKey(mapsapikey[0].mapsApiKey);
   };
 
   const onToggleEasyText = () => {
@@ -314,6 +308,7 @@ const ArtpieceDetail = ({ match }) => {
                 component="p"
               ></Typography>
             </div>
+            <SimpleMap lat={artpiece.location.split(",")[0]} lon={artpiece.location.split(",")[1]} />
           </Container>
         </main>
       </Fragment>
