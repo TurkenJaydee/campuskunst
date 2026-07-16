@@ -3,7 +3,6 @@ import Container from "@material-ui/core/Container";
 import API_PATH from "../../localapi/localapi";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import MapContainer from "../MapContainer/MapContainer";
 import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 import Typography from "@material-ui/core/Typography";
 import Switch from "@material-ui/core/Switch";
@@ -314,19 +313,6 @@ const ArtpieceDetail = ({ match }) => {
                 color="textSecondary"
                 component="p"
               ></Typography>
-            </div>
-            <div className={classes.mapsWrapper}>
-              <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
-                Standort
-              </Typography>
-              <div className={classes.mapContainer}>
-                <MapContainer
-                  apiKey={mapsApiKey}
-                  lat={artpiece.location.split(",")[0]}
-                  lng={artpiece.location.split(",")[1]}
-                  name={artpiece.name}
-                />
-              </div>
             </div>
           </Container>
         </main>
