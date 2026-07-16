@@ -287,20 +287,22 @@ const ArtpieceDetail = ({ match }) => {
                 12x36cm
               </div>
             </div>
-            <FormControlLabel
-              className={classes.formControl}
-              control={
-                <Switch
-                  checked={toggleEasyText}
-                  onChange={onToggleEasyText}
-                  color="primary"
-                  name="Einfache Sprache Button"
-                  size="medium"
-                  aria-label="Einfache Sprache ein und ausschalten"
-                />
-              }
-              label="Einfache Sprache"
-            />
+            {artpiece.description_easy && (
+              <FormControlLabel
+                className={classes.formControl}
+                control={
+                  <Switch
+                    checked={toggleEasyText}
+                    onChange={onToggleEasyText}
+                    color="primary"
+                    name="Einfache Sprache Button"
+                    size="medium"
+                    aria-label="Einfache Sprache ein und ausschalten"
+                  />
+                }
+                label="Einfache Sprache"
+              />
+            )}
             <div className={classes.descriptionSection}>
               <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
                 Beschreibung
