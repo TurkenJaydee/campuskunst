@@ -176,6 +176,12 @@ const ArtpieceDetail = ({ match }) => {
       fontWeight: 600,
     },
 
+    mapsHeading: {
+      margin: "1rem 0 0 0",
+      fontFamily: "Montserrat",
+      fontWeight: 600,
+    },
+
     sectionHeading: {
       margin: "0 0 0.5rem 0",
       fontFamily: "Montserrat",
@@ -308,6 +314,9 @@ const ArtpieceDetail = ({ match }) => {
                 component="p"
               ></Typography>
             </div>
+            <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.mapsHeading}>
+                  Das Objekt befindet sich hier:
+                </Typography>
             <SimpleMap lat={artpiece.location.split(",")[0]} lon={artpiece.location.split(",")[1]} />
           </Container>
         </main>
