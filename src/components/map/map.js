@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SimpleMap({ lat, lon }) {
+  // State für die Verzögerung
+  const [loadSrc, setLoadSrc] = useState(false);
+
+  // Timer: Baut das Fenster auf und lädt nach 500ms (0.5 Sekunden) den Inhalt
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadSrc(true);
+    }, 500);
+    
+    // Aufräumen, falls die Komponente schnell wieder geschlossen wird
+    return () => clearTimeout(timer);
+  }, []);
+
   // 1. Die übergebenen Werte zwingend in echte Kommazahlen umwandeln
   const numericLat = parseFloat(lat);
   const numericLon = parseFloat(lon);
@@ -25,22 +38,36 @@ export default function SimpleMap({ lat, lon }) {
   const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${numericLat},${numericLon}`;
 
   return (
-    <div style={{ width: '100%', height: '400px', marginBottom: '20px' }}>
+    // Der umgebende Container diktiert die Größe
+    <div style={{ 
+      width: '100%', 
+      aspectRatio: '16 / 9', // Hält das Format proportional auf allen Bildschirmen
+      minHeight: '250px',    // Fällt auf kleinen Handys nicht zu einem Schlitz zusammen
+      maxHeight: '450px',    // Wird auf riesigen Monitoren nicht zu hoch
+      backgroundColor: '#eaeaea', // Grauer Platzhalter, während OSM noch lädt
+      marginBottom: '25px',
+      position: 'relative'
+    }}>
       <iframe
         width="100%"
         height="100%"
         frameBorder="0"
         scrolling="no"
-        marginHeight="0"
-        marginWidth="0"
-        src={mapUrl}
-        style={{ border: '1px solid #ccc', borderRadius: '4px' }}
+        // Hier greift die Verzögerung: src bleibt leer, bis loadSrc true ist
+        src={loadSrc ? mapUrl : ""}
+        style={{ 
+          border: '1px solid #ccc', 
+          borderRadius: '4px',
+          display: 'block' 
+        }}
         title="OpenStreetMap Standort"
       />
-      <div style={{ textAlign: 'right', marginTop: '5px' }}>
+      
+      {/* Den Link absolut darunter positionieren, damit er das Layout der Karte nicht stört */}
+      <div style={{ position: 'absolute', bottom: '-25px', right: '0' }}>
         <small>
           <a 
-            href={`https://www.openstreetmap.org/?mlat=${numericLat}&mlon=${numericLon}#map=16/${numericLat}/${numericLon}`} 
+            href={`https://www.openstreetmap.org/?mlat=${numericLat}&mlon=${numericLon}#map=17/${numericLat}/${numericLon}`} 
             target="_blank" 
             rel="noopener noreferrer"
             style={{ color: '#0078A8', textDecoration: 'none' }}
