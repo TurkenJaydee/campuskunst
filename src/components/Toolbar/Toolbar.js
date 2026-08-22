@@ -44,24 +44,25 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     position: "absolute",
     left: "1%",
-    top: "2%",
-    width: "25%",
+    top: "10%",
+    width: "145px",
     zIndex: "2",
+    height: "initial",
 
     [theme.breakpoints.up("xs")]: {
-      width: "350px",
+    width: "145px",
     },
 
     [theme.breakpoints.up("sm")]: {
-      width: "400px",
+    width: "145px",
     },
 
     [theme.breakpoints.up("md")]: {
-      width: "450px",
+    width: "145px",
     },
 
     [theme.breakpoints.up("lg")]: {
-      width: "500px",
+    width: "145px",
     },
   },
 

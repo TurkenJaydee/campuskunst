@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     lineHeight: "1",
   },
+
+  select: {
+    marginTop: "8px !important",
+  },
 }));
 
 const FontSelect = ({ setFontSize }) => {
@@ -66,7 +70,7 @@ const FontSelect = ({ setFontSize }) => {
           <InputLabel className={classes.inputLabel} id="demo-simple-select-helper-label">
             Größe
           </InputLabel>
-          <Select
+          <Select className={classes.select}
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
             value={currentValue}
