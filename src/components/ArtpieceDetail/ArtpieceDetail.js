@@ -314,10 +314,17 @@ const ArtpieceDetail = ({ match }) => {
                 component="p"
               ></Typography>
             </div>
-            <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.mapsHeading}>
+
+            {/* Hier ist der bedingte Block für die Karte */}
+            {artpiece.location && (
+              <Fragment>
+                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.mapsHeading}>
                   Das Objekt befindet sich hier:
                 </Typography>
-            <SimpleMap lat={artpiece.location.split(",")[0]} lon={artpiece.location.split(",")[1]} />
+                <SimpleMap lat={artpiece.location.split(",")[0]} lon={artpiece.location.split(",")[1]} />
+              </Fragment>
+            )}
+
           </Container>
         </main>
       </Fragment>
