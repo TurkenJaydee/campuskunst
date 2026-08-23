@@ -74,8 +74,6 @@ const start = () => {
     firstContent: {
       marginLeft: 'auto',
       marginRight: 'auto',
-      width: toggleEasyText ? "80%" : "100%",
-
     },
 
     section: {
@@ -159,8 +157,7 @@ const start = () => {
     },
 
     formControl: {
-      flexDirection: "column-reverse",
-      marginBottom: "3rem",
+      marginBottom: "2rem",
 
       [theme.breakpoints.down('sm')]: {
         marginBottom: '1.5rem',

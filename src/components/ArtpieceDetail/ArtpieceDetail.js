@@ -18,7 +18,6 @@ const ArtpieceDetail = ({ match }) => {
   }, []);
 
   const [artpiece, setArtpiece] = useState({});
-  const [mapsApiKey, setMapsApiKey] = useState('');
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
   const fetchArtpiece = async () => {

@@ -153,7 +153,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
             <NavLink exact to={"/"}>
               <SVG
                 className={classes.logo}
-                src={require("./uni_logo.svg")}
+                src={require("../../logos/uni_logo.svg")}
                 description="Universität Bremen Logo"
                 alt="Uni Logo - Link zur Startseite"
               />
@@ -186,9 +186,9 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
               <FontSelect setFontSize={setFontSize} />
               <img
                 className={classes.buaLogo}
-                src={require("./logo_archiv_web_200.png")}
-                description="Universität Bremen Logo"
-                alt="Zentralarchiv Bremen Logo"
+                src={require("../../logos/logo_archiv_web_200.png")}
+                description="Universitätsarchiv Bremen Logo"
+                alt="Universitätsarchiv Bremen Logo"
               />
             </div>
           </nav>

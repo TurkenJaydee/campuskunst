@@ -100,7 +100,7 @@ const Slogan = () => {
           <Typography className={classes.sloganMain}>
             <span>CAMPUSKUNST</span>
           </Typography>
-          <Typography className={classes.sloganSubline}>Kunst der Uni auf einen Blick</Typography>
+          <Typography className={classes.sloganSubline}>Kunstwerke an der Uni Bremen</Typography>
         </div>
       </div>
     </Fragment>

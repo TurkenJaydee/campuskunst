@@ -32,10 +32,6 @@ const API_PATH = (db) => {
   if (db === databases.sources) {
     return onLocal ? `http://localhost/campuskunst/api/index_sources.php` : `../api/index_sources.php`;
   }
-
-  if (db === databases.mapsapikey) {
-    return onLocal ? `http://localhost/campuskunst/api/index_mapsapikey.php` : `../api/index_mapsapikey.php`;
-  }
 };
 
 export default API_PATH;

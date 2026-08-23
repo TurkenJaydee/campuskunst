@@ -51,7 +51,7 @@ const Header = () => {
 
                 <li><Link to="/">
                         <SVG className={classes.logo}
-                            src={require('./uni_logo.svg')}
+                            src={require('../../logos/uni_logo.svg')}
                             description="Universität Bremen Logo"
                             xmlns="http://www.w3.org/2000/svg"
                             xmlnsXlink="http://www.w3.org/1999/xlink"
