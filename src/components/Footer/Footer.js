@@ -78,7 +78,7 @@ export default function Footer() {
         >
           <img
             className={classes.buaLogo}
-            src={require("./logo_archiv_web_200.png")}
+            src={require("../../logos/logo_archiv_web_200.png")}
             description="Universität Bremen Logo"
             alt="Zentralarchiv Bremen Logo"
           />
