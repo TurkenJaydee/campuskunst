@@ -11,7 +11,6 @@ import Fade from "@material-ui/core/Fade";
 import { databases } from "../../localapi/databases.enum";
 import API_PATH from "../../localapi/localapi";
 
-
 const References = () => {
   const [literature, setLiterature] = useState([]);
   const [sources, setSources] = useState([]);
@@ -33,12 +32,13 @@ const References = () => {
 
   const useStyles = makeStyles((theme) => ({
     main: {
-      paddingTop: "5%",
+      paddingTop: "2%",
     },
 
     paper: {
       width: "100%",
       height: "fit-content",
+      paddingTop: "25px",
     },
 
     content: {
@@ -56,6 +56,11 @@ const References = () => {
 
     title: {
       marginLeft: "1rem",
+      fontWeight: "600 !important",
+    },
+
+    icon: {
+      marginTop: "0.4rem",
     },
   }));
 
@@ -69,15 +74,23 @@ const References = () => {
           <Grid className={classes.item} item xs={12} md={6}>
             <Paper elevation={3} className={classes.paper}>
               <Typography component={"span"} className={classes.content}>
-                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.title}>
+                <Typography
+                  variant="h5"
+                  variantMapping={{ h5: "h2" }}
+                  className={classes.title}
+                >
                   Quellen
                 </Typography>
                 <List className={classes.list}>
                   {sources.map((sourceData, index) => {
                     return (
-                      <ListItem key={index}>
-                        <BookOutlinedIcon aria-hidden="true" />
-                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "p" }} className={classes.source}>
+                      <ListItem key={index} alignItems="top">
+                        <BookOutlinedIcon className={classes.icon} aria-hidden="true" />
+                        <Typography
+                          variant="subtitle1"
+                          variantMapping={{ subtitle1: "p" }}
+                          className={classes.source}
+                        >
                           {sourceData.source}
                         </Typography>
                       </ListItem>
@@ -90,15 +103,23 @@ const References = () => {
           <Grid className={classes.item} item xs={12} md={6}>
             <Paper elevation={3} className={classes.paper}>
               <Typography component={"span"} className={classes.content}>
-                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.title}>
+                <Typography
+                  variant="h5"
+                  variantMapping={{ h5: "h2" }}
+                  className={classes.title}
+                >
                   Literatur
                 </Typography>
                 <List className={classes.list}>
-                {literature.map((literatureData, index) => {
+                  {literature.map((literatureData, index) => {
                     return (
-                      <ListItem key={index}>
-                        <BookOutlinedIcon aria-hidden="true" />
-                        <Typography variant="subtitle1" variantMapping={{ subtitle1: "p" }} className={classes.source}>
+                      <ListItem key={index} alignItems="top">
+                        <BookOutlinedIcon className={classes.icon} aria-hidden="true" />
+                        <Typography
+                          variant="subtitle1"
+                          variantMapping={{ subtitle1: "p" }}
+                          className={classes.source}
+                        >
                           {literatureData.literature}
                         </Typography>
                       </ListItem>

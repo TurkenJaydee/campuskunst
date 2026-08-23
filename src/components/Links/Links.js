@@ -44,16 +44,17 @@ const Links = () => {
 
       "& span": {
         display: "flex",
-        alignItems: "center",
+        alignItems: "top",
       },
     },
 
     main: {
-      paddingTop: "5%",
+      paddingTop: "2%",
     },
 
     paper: {
       width: "100%",
+      paddingTop: "20px",
     },
 
     content: {
@@ -79,6 +80,11 @@ const Links = () => {
     },
     title: {
       padding: "0.5rem",
+      fontWeight: "600 !important",
+    },
+
+    icon: {
+      marginTop: "0.2rem",
     },
   }));
 
@@ -96,16 +102,26 @@ const Links = () => {
             <Grid className={classes.item} item xs={12} md={4} sm={6}>
               <Paper elevation={3} className={classes.paper}>
                 <Typography component={"span"} className={classes.content}>
-                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                  <Typography
+                    variant="h6"
+                    variantMapping={{ h6: "h2" }}
+                    className={classes.title}
+                  >
                     Institutionen
                   </Typography>
                   <List className={classes.list}>
                     {institutions.map((institutionsData, index) => {
                       if (institutions.length > 0) {
                         return (
-                          <ListItem className={classes.listItemText} key={index}>
+                          <ListItem
+                            className={classes.listItemText}
+                            key={index}
+                          >
                             <BusinessRoundedIcon aria-hidden="true" />
-                            <a href={`${institutionsData.link}`} rel="noopener noreferrer">
+                            <a
+                              href={`${institutionsData.link}`}
+                              rel="noopener noreferrer"
+                            >
                               {institutionsData.name}
                             </a>
                           </ListItem>
@@ -121,16 +137,26 @@ const Links = () => {
             <Grid className={classes.item} item xs={12} md={4} sm={6}>
               <Paper elevation={3} className={classes.paper}>
                 <Typography component={"span"} className={classes.content}>
-                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                  <Typography
+                    variant="h6"
+                    variantMapping={{ h6: "h2" }}
+                    className={classes.title}
+                  >
                     KünstlerInnen
                   </Typography>
                   <List className={classes.list}>
                     {artists.map((artistsData, index) => {
                       if (artists.length > 0) {
                         return (
-                          <ListItem className={classes.listItemText} key={index}>
+                          <ListItem
+                            className={classes.listItemText}
+                            key={index}
+                          >
                             <BusinessRoundedIcon aria-hidden="true" />
-                            <a href={`${artistsData.link}`} rel="noopener noreferrer">
+                            <a
+                              href={`${artistsData.link}`}
+                              rel="noopener noreferrer"
+                            >
                               {artistsData.name}
                             </a>
                           </ListItem>
@@ -146,16 +172,27 @@ const Links = () => {
             <Grid className={classes.item} item xs={12} sm={4}>
               <Paper elevation={3} className={classes.paper}>
                 <Typography component={"span"} className={classes.content}>
-                  <Typography variant="h6" variantMapping={{ h6: "h2" }} className={classes.title}>
+                  <Typography
+                    variant="h6"
+                    variantMapping={{ h6: "h2" }}
+                    className={classes.title}
+                  >
                     Weiterführende Online-Informationen
                   </Typography>
                   <List className={classes.list}>
                     {furtherInfo.map((furtherInfoData, index) => {
                       if (furtherInfo.length > 0) {
                         return (
-                          <ListItem className={classes.listItemText} key={index}>
-                            <InfoOutlinedIcon aria-hidden="true" />
-                            <a href={`${furtherInfoData.link}`} rel="noopener noreferrer">
+                          <ListItem
+                            className={classes.listItemText}
+                            key={index}
+                            alignItems="top"
+                          >
+                            <InfoOutlinedIcon className={classes.icon} aria-hidden="true" />
+                            <a
+                              href={`${furtherInfoData.link}`}
+                              rel="noopener noreferrer"
+                            >
                               {furtherInfoData.name}
                             </a>
                           </ListItem>
