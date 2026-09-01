@@ -74,13 +74,13 @@ const artpiece = (props) => {
     },
   }));
 
+
   const classes = useStyles();
 
-  const imageEmpty = (imageString) => {
+const imageEmpty = (imageString) => {
     try {
-      return process.env.PUBLIC_URL + "/img/" + imageString;
+      return `${window.location.origin}${process.env.PUBLIC_URL}/img/${imageString}`;
     } catch (e) {
-      console.log("Image not found of Artpiece with ID: " + props.id);
       return "https://southseattle.edu/sites/default/files/error404/south-seattle-otter.jpg";
     }
   };

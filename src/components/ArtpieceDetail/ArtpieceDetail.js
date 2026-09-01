@@ -38,9 +38,15 @@ const ArtpieceDetail = ({ match }) => {
     }
   };
 
-  const getImageString = () => {
+/*   const getImageString = () => {
     if (artpiece) {
       return `url(${process.env.PUBLIC_URL + "/img/" + artpiece.image_1})`;
+    }
+  }; */
+
+  const getImageString = () => {
+    if (artpiece) {
+      return `url(${window.location.origin}${process.env.PUBLIC_URL}/img/${artpiece.image_1})`;
     }
   };
 
@@ -231,7 +237,8 @@ const ArtpieceDetail = ({ match }) => {
           <div className={classes.headerContainer}>
             <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
               <div className={classes.header}>
-                <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img>
+                <img className={classes.image} alt={artpiece.alt_text} src={`${window.location.origin}${process.env.PUBLIC_URL}/img/${artpiece.image_1}`}></img>
+                {/* <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img> */}
               </div>
             </span>
           </div>
