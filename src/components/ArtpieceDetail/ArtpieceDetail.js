@@ -18,14 +18,21 @@ const ArtpieceDetail = ({ match }) => {
   }, []);
 
   const [artpiece, setArtpiece] = useState({});
+  const [mapsApiKey, setMapsApiKey] = useState('');
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
   const fetchArtpiece = async () => {
-    const data = await fetch(API_PATH("artpieces"));
-    const artpiece = await data.json();
+    try {
+      const data = await fetch(API_PATH("artpieces"));
+      const artpieceArray = await data.json();
 
-    var contains = artpiece.filter((artpiece) => artpiece.name.replace("-", "/") === match.params.name.replace("-", "/"))[0];
-    setArtpiece(contains);
+      const searchName = decodeURIComponent(match.params.name).replace("-", "/");
+      
+      const contains = artpieceArray.find((item) => item.name.replace("-", "/") === searchName);
+      setArtpiece(contains);
+    } catch (error) {
+      console.error("Fehler beim Laden der API:", error);
+    }
   };
 
   const onToggleEasyText = () => {
@@ -38,15 +45,10 @@ const ArtpieceDetail = ({ match }) => {
     }
   };
 
-/*   const getImageString = () => {
-    if (artpiece) {
-      return `url(${process.env.PUBLIC_URL + "/img/" + artpiece.image_1})`;
-    }
-  }; */
-
   const getImageString = () => {
-    if (artpiece) {
-      return `url(${window.location.origin}${process.env.PUBLIC_URL}/img/${artpiece.image_1})`;
+    if (artpiece && artpiece.image_1) {
+      const safeFilename = encodeURIComponent(artpiece.image_1);
+      return `url('${window.location.origin}${process.env.PUBLIC_URL}/img/${safeFilename}')`;
     }
   };
 
@@ -237,8 +239,7 @@ const ArtpieceDetail = ({ match }) => {
           <div className={classes.headerContainer}>
             <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
               <div className={classes.header}>
-                <img className={classes.image} alt={artpiece.alt_text} src={`${window.location.origin}${process.env.PUBLIC_URL}/img/${artpiece.image_1}`}></img>
-                {/* <img className={classes.image} alt={artpiece.alt_text} src={process.env.PUBLIC_URL + "/img/" + artpiece.image_1}></img> */}
+                <img className={classes.image} alt={artpiece.alt_text} src={artpiece && artpiece.image_1 ? `${window.location.origin}${process.env.PUBLIC_URL}/img/${encodeURIComponent(artpiece.image_1)}` : ""}></img>
               </div>
             </span>
           </div>
@@ -256,7 +257,7 @@ const ArtpieceDetail = ({ match }) => {
                 <div aria-hidden="true"></div>
               )}
               <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
-                {artpiece.tags.split(",").map((tag, index) => {
+                {artpiece.tags && artpiece.tags.split(",").map((tag, index) => {
                   return (
                     <Fragment key={index}>
                       <Chip
@@ -321,7 +322,7 @@ const ArtpieceDetail = ({ match }) => {
               ></Typography>
             </div>
 
-            {/* Hier ist der bedingte Block für die Karte */}
+            {/* Die Karte und Überschrift werden nur gerendert, wenn Location-Daten vorhanden sind */}
             {artpiece.location && (
               <Fragment>
                 <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.mapsHeading}>
@@ -330,7 +331,7 @@ const ArtpieceDetail = ({ match }) => {
                 <SimpleMap lat={artpiece.location.split(",")[0]} lon={artpiece.location.split(",")[1]} />
               </Fragment>
             )}
-
+            
           </Container>
         </main>
       </Fragment>
