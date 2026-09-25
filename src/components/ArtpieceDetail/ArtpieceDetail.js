@@ -18,7 +18,6 @@ const ArtpieceDetail = ({ match }) => {
   }, []);
 
   const [artpiece, setArtpiece] = useState({});
-  const [mapsApiKey, setMapsApiKey] = useState('');
   const [toggleEasyText, setToggleEasyText] = useState(false);
 
   const fetchArtpiece = async () => {
@@ -233,15 +232,20 @@ const ArtpieceDetail = ({ match }) => {
     return (
       <Fragment>
         <Helmet>
-          <title>{artpiece.name}</title>
+          <title>{artpiece.name ? `Kunstwerk: ${artpiece.name} - Campuskunst` : "Lade Kunstwerk..."}</title>
         </Helmet>
         <main>
           <div className={classes.headerContainer}>
-            <span className={classes.backgroundImage} role="presentation" aria-label={artpiece.alt_text}>
+            {/* Semantic Fix: Kein span mit role="presentation" UND aria-label, stattdessen ein sauberes div */}
+            <div className={classes.backgroundImage}>
               <div className={classes.header}>
-                <img className={classes.image} alt={artpiece.alt_text} src={artpiece && artpiece.image_1 ? `${window.location.origin}${process.env.PUBLIC_URL}/img/${encodeURIComponent(artpiece.image_1)}` : ""}></img>
+                <img 
+                  className={classes.image} 
+                  alt={artpiece.alt_text || `Ansicht von ${artpiece.name}`} 
+                  src={artpiece && artpiece.image_1 ? `${window.location.origin}${process.env.PUBLIC_URL}/img/${encodeURIComponent(artpiece.image_1)}` : ""}
+                />
               </div>
-            </span>
+            </div>
           </div>
           <Container className={classes.attributesWrapper} maxWidth="md">
             <div className={classes.attributeHeader}>
@@ -249,14 +253,13 @@ const ArtpieceDetail = ({ match }) => {
                 {artpiece.name}
               </Typography>
 
-              {artpiece.subtitle ? (
+              {artpiece.subtitle && (
                 <Typography variant="subtitle1" variantMapping={{ subtitle1: "h2" }} align="center" className={classes.subtitle}>
                   {artpiece.subtitle}
                 </Typography>
-              ) : (
-                <div aria-hidden="true"></div>
               )}
-              <Typography variant="subtitle2" variantMapping={{ subtitle2: "span" }} className={classes.tags}>
+              
+              <Typography variant="subtitle2" variantMapping={{ subtitle2: "div" }} className={classes.tags}>
                 {artpiece.tags && artpiece.tags.split(",").map((tag, index) => {
                   return (
                     <Fragment key={index}>
@@ -266,33 +269,36 @@ const ArtpieceDetail = ({ match }) => {
                         variant="default"
                         size="small"
                         label={tag.trim()}
-                        icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
+                        icon={<LocalOfferOutlinedIcon className={classes.tagIcon} aria-hidden="true" />}
                       />
                     </Fragment>
                   );
                 })}
               </Typography>
             </div>
+            
             <div className={classes.attributes}>
               <div className={classes.attribute}>
-                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                {/* Semantic Fix: "h3" statt "h2", da es strukturell unter dem Titel liegt */}
+                <Typography variant="h5" variantMapping={{ h5: "h3" }} className={classes.artistHeading}>
                   KünstlerIn
                 </Typography>
                 {artpiece.artist}
               </div>
               <div className={classes.attribute}>
-                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                <Typography variant="h5" variantMapping={{ h5: "h3" }} className={classes.artistHeading}>
                   Datum
                 </Typography>
                 {artpiece.date}
               </div>
               <div className={classes.attribute}>
-                <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.artistHeading}>
+                <Typography variant="h5" variantMapping={{ h5: "h3" }} className={classes.artistHeading}>
                   Größe
                 </Typography>
                 12x36cm
               </div>
             </div>
+            
             {artpiece.description_easy && (
               <FormControlLabel
                 className={classes.formControl}
@@ -303,12 +309,15 @@ const ArtpieceDetail = ({ match }) => {
                     color="primary"
                     name="Einfache Sprache Button"
                     size="medium"
+                    // aria-label ist gut, aria-expanded hilft hier zusätzlich, den Status zu kommunizieren
                     aria-label="Einfache Sprache ein und ausschalten"
+                    aria-checked={toggleEasyText}
                   />
                 }
                 label="Einfache Sprache"
               />
             )}
+            
             <div className={classes.descriptionSection}>
               <Typography className={classes.sectionHeading} variant="h5" variantMapping={{ h5: "h2" }}>
                 Beschreibung
@@ -318,11 +327,10 @@ const ArtpieceDetail = ({ match }) => {
                 dangerouslySetInnerHTML={{ __html: getTextStyle() }}
                 variant="body2"
                 color="textSecondary"
-                component="p"
+                component="div" // Component "p" bei raw HTML mit Block-Elementen (wie Bildern/PDF-Links) ist invalid HTML
               ></Typography>
             </div>
 
-            {/* Die Karte und Überschrift werden nur gerendert, wenn Location-Daten vorhanden sind */}
             {artpiece.location && (
               <Fragment>
                 <Typography variant="h5" variantMapping={{ h5: "h2" }} className={classes.mapsHeading}>
@@ -339,7 +347,7 @@ const ArtpieceDetail = ({ match }) => {
   } catch (e) {
     return (
       <Container className={classes.error} maxWidth="md">
-        <CircularProgress />
+        <CircularProgress aria-label="Lade Details zum Kunstwerk..." />
       </Container>
     );
   }

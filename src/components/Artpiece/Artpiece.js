@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -14,70 +14,55 @@ const artpiece = (props) => {
   const useStyles = makeStyles((theme) => ({
     card: {
       width: "100%",
-    },
-
-    link: {
-      textDecoration: "none",
-      display: 'flex',
-      flexDirection: "column",
       height: "100%",
-      justifyContent: "space-between",
-
-      "&:visited, &:hover, &:link, &:active": {
-        textDecoration: "none",
-        color: "inherit",
-      },
-    },
-
-    chip: {
-      marginRight: "0.5rem",
-      marginBottom: '0.5rem',
-
-      "&:hover": {
-          cursor: 'pointer',
-      },
-    },
-
-    name: {
-      marginBottom: "0",
-      fontWeight: "400",
-    },
-
-    tagIcon: {
-      display: "inline-block",
-      verticalAlign: "middle",
-      marginLeft: "0.5rem",
-      color: "white",
-    },
-
-    firstChild: {
-      textAlign: "center",
-      paddingBottom: "0 !important",
-    },
-
-    lastChild: {
-      paddingBottom: "1rem !important",
-    },
-
-    meta: {
-      paddingBottom: "0",
-      textAlign: "center",
-    },
-
-    tags: {
-      textAlign: "center",
     },
     actionArea: {
       height: "100%",
       display: "flex",
-      alignItems: "flex-start",
+      flexDirection: "column",
+      alignItems: "stretch",
+      justifyContent: "flex-start",
+      // Fokus-Rahmen für Tastaturnutzer sichtbar machen
+      "&:focus-visible": {
+        outline: "3px solid #1976d2",
+        outlineOffset: "2px",
+      }
+    },
+    cardMediaContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      flexGrow: 1, 
+    },
+    chip: {
+      marginRight: "0.5rem",
+      marginBottom: '0.5rem',
+    },
+    name: {
+      marginBottom: "0",
+      fontWeight: "400",
+    },
+    tagIcon: {
+      display: "inline-block",
+      verticalAlign: "middle",
+      marginLeft: "0.5rem",
+      color: "white", 
+    },
+    firstChild: {
+      textAlign: "center",
+      paddingBottom: "0 !important",
+    },
+    lastChild: {
+      paddingBottom: "1rem !important",
+      marginTop: "auto", 
+    },
+    tags: {
+      textAlign: "center",
     },
   }));
 
-
   const classes = useStyles();
 
-const imageEmpty = (imageString) => {
+  const imageEmpty = (imageString) => {
     try {
       return `${window.location.origin}${process.env.PUBLIC_URL}/img/${imageString}`;
     } catch (e) {
@@ -87,51 +72,54 @@ const imageEmpty = (imageString) => {
 
   const returnTags = (tagList) => {
     if (tagList) {
-      return tagList.split(",").map((tag, index) => {
-        return (
-          <Fragment key={index}>
-            <Chip
-              className={classes.chip}
-              key={tagList.indexOf(tag)}
-              color="primary"
-              variant="default"
-              size="small"
-              label={tag.trim()}
-              icon={<LocalOfferOutlinedIcon className={classes.tagIcon} />}
-            />
-          </Fragment>
-        );
-      });
+      return tagList.split(",").map((tag, index) => (
+        <Chip
+          className={classes.chip}
+          key={index} 
+          color="primary"
+          variant="default"
+          size="small"
+          label={tag.trim()}
+          // aria-hidden verhindert, dass Screenreader das Icon für jedes Tag vorlesen
+          icon={<LocalOfferOutlinedIcon className={classes.tagIcon} aria-hidden="true" />}
+        />
+      ));
     }
   };
 
   try {
     return (
-      <Fragment>
-        <Card className={classes.card}>
-          <CardActionArea className={classes.actionArea} tabIndex="-1">
-            <Link className={classes.link} to={`/kunstwerke/${props.name.replace("/", "-")}`} title={props.name.replace("/", "-")}>
-              <div>
-                <CardMedia component="img" image={imageEmpty(props.image)} title={props.name} height="300" alt={props.alt}></CardMedia>
-                <CardContent className={classes.firstChild}>
-                  <Typography className={classes.name} gutterBottom variant="caption" variantMapping={{ caption: "h2" }}>
-                    {props.name}
-                  </Typography>
-                </CardContent>
-              </div>
-              <CardContent className={classes.lastChild}>
-                <div className={classes.tags}>
-                  {returnTags(props.tag)}
-                </div>
-              </CardContent>
-            </Link>
-          </CardActionArea>
-        </Card>
-      </Fragment>
+      <Card className={classes.card} component="article">
+        <CardActionArea 
+          className={classes.actionArea} 
+          component={Link} 
+          to={`/kunstwerke/${props.name.replace("/", "-")}`}
+          aria-label={`Details zum Kunstwerk: ${props.name}`}
+        >
+          <div className={classes.cardMediaContent}>
+            <CardMedia 
+              component="img" 
+              image={imageEmpty(props.image)} 
+              height="300" 
+              alt={props.alt || `Ansicht von ${props.name}`} 
+            />
+            <CardContent className={classes.firstChild}>
+              <Typography className={classes.name} gutterBottom variant="caption" variantMapping={{ caption: "h2" }}>
+                {props.name}
+              </Typography>
+            </CardContent>
+          </div>
+          <CardContent className={classes.lastChild}>
+            <div className={classes.tags}>
+              {returnTags(props.tag)}
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     );
   } catch (e) {
     console.log(e);
-    return <CircularProgress />;
+    return <CircularProgress aria-label="Lade Kunstwerk..." />;
   }
 };
 
