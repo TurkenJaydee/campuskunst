@@ -49,7 +49,11 @@ const Filter = (
 
   return (
     <Fragment>
-      <div className={classes.root} aria-label="Kategorien wählen">
+      <div
+        className={classes.root}
+        role="group"
+        aria-label="Kategorien wählen"
+      >
         {TAGLIST.map((tag, index) => {
           return <Tag
             key={index}
@@ -59,6 +63,7 @@ const Filter = (
           />
         })}
       </div>
+
       <SliderBar
         value={value}
         valuetext={valuetext}
@@ -74,10 +79,12 @@ const Filter = (
         startIcon={<AutorenewOutlinedIcon />}
         onClick={toggleFilter}
         size="large"
+        type="button"
+        aria-label="Filter-Ergebnisse anwenden"
+        title="Filter-Ergebnisse anwenden"
       >
         Filtern
       </Button>
-
     </Fragment>
   );
 };
