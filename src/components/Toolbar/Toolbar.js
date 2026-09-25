@@ -129,6 +129,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  fontSelectMobile: {
+    display: "flex",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+
   buaLogo: {
     zIndex: 10000,
     width: "70px",
@@ -192,7 +200,9 @@ const Toolbar = ({ drawerClickHandler, setFontSize, sideDrawerOpen }) => {
             </div>
             
             <div style={{ display: "flex", alignItems: "center" }}>
-              <FontSelect setFontSize={setFontSize} />
+              <div className={classes.fontSelectMobile}>
+                <FontSelect setFontSize={setFontSize} />
+              </div>
               <img
                 className={classes.buaLogo}
                 src={require("../../logos/logo_archiv_web_200.png")}
@@ -217,7 +227,7 @@ const Toolbar = ({ drawerClickHandler, setFontSize, sideDrawerOpen }) => {
           />
         ))}
       </Switch>
-      <Switch className={classes.links}>
+      <Switch>
         <Route exact path="/" component={Start} />
         <Route exact path="/kunstwerke" component={Artpieces} />
         <Route exact path="/referenzen" component={References} />
