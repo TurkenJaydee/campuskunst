@@ -46,18 +46,32 @@ const useStyles = makeStyles((theme) => ({
   },
 
   notFound: {
-    paddingLeft: "1rem"
+    paddingLeft: "1rem",
+    marginTop: "2rem",
+    fontSize: "1.2rem",
+  },
+
+  // A11y: Klasse für unsichtbaren Text, der nur von Screenreadern gelesen wird
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: '0',
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: '0',
   }
 }));
 
-const artpieces = () => {
+const Artpieces = () => {
   const [artpieces, setArtpieces] = useState([]);
   const [sortedArtpieces, setSortedArtpieces] = useState([]);
   const [filteredArtpieces, setFilteredArtpieces] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [tags, setTags] = useState([]);
   const [sliderValue, setSliderValue] = React.useState([1900, 2020]);
-
 
   const fetchData = async () => {
     window.scrollTo(0, 0);
@@ -119,10 +133,17 @@ const artpieces = () => {
     return (
       <Fragment>
         <Helmet>
-          <title>Kunstwerke</title>
+          <title>Kunstwerke - Campuskunst</title>
         </Helmet>
         <Fade in={true} timeout={1500}>
-          <Container maxWidth="lg" role="main">
+          {/* Semantic Fix: component="main" rendert ein echtes <main> Tag, statt div mit role="main" */}
+          <Container maxWidth="lg" component="main">
+            
+            {/* A11y Fix: Dynamische Statusmeldungen (Live Region) für Filterergebnisse */}
+            <div aria-live="polite" className={classes.srOnly}>
+              {filteredArtpieces.length} {filteredArtpieces.length === 1 ? "Ergebnis" : "Ergebnisse"} gefunden.
+            </div>
+
             <Grid container spacing={4}>
               <Grid className={classes.input} item xs={12}>
                 <Search
@@ -138,7 +159,7 @@ const artpieces = () => {
                   toggleFilter={onToggleFilter}
                   toogleFilterOnEnter={onEnterToggle}
                 />
-                <Typography className={classes.mainHeading} variant="h1" align="left" display="block">
+                <Typography className={classes.mainHeading} variant="h4" component="h1" align="left" display="block">
                   Suchergebnisse:
                 </Typography>
               </Grid>
@@ -162,7 +183,10 @@ const artpieces = () => {
                     );
                   })
                 ) : (
-                  <span className={classes.notFound}>Nicht vorhanden</span>
+                  // A11y Fix: Klarer Text in einem Absatz (p) mit alert-Rolle, wenn nichts gefunden wird
+                  <Typography component="p" role="alert" className={classes.notFound}>
+                    Es wurden keine Kunstwerke gefunden, die den Suchkriterien entsprechen.
+                  </Typography>
                 )}
               </Fragment>
             </Grid>
@@ -171,8 +195,13 @@ const artpieces = () => {
       </Fragment>
     );
   } else {
-    return <SpinningCircle />;
+    // A11y Fix: Lade-Bereich mit aria-busy markieren
+    return (
+      <div aria-busy="true" aria-label="Lade Kunstwerke">
+        <SpinningCircle />
+      </div>
+    );
   }
 };
 
-export default artpieces;
+export default Artpieces; // Dateinamen-Export sollte idealerweise großgeschrieben sein (Best Practice für React-Komponenten)
