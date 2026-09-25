@@ -9,10 +9,9 @@
 # production
 /build
 
-#config
-/src/api
 
-config.php
+/api/config.php
+!/api/config.php.example
 
 # misc
 .DS_Store
