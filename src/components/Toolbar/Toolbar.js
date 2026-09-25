@@ -50,19 +50,16 @@ const useStyles = makeStyles((theme) => ({
     height: "initial",
 
     [theme.breakpoints.up("xs")]: {
-    width: "145px",
+      width: "145px",
     },
-
     [theme.breakpoints.up("sm")]: {
-    width: "145px",
+      width: "145px",
     },
-
     [theme.breakpoints.up("md")]: {
-    width: "145px",
+      width: "145px",
     },
-
     [theme.breakpoints.up("lg")]: {
-    width: "145px",
+      width: "145px",
     },
   },
 
@@ -116,6 +113,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.2rem",
       textDecoration: "none",
       padding: "1rem 0 1rem 0",
+      borderRadius: "4px", // Leicht abgerundet für den Fokus-Rahmen
+      // Fokus-Sichtbarkeit für Tastaturnutzer
+      "&:focus-visible": {
+        outline: "3px solid #1976d2",
+        outlineOffset: "2px",
+      }
     },
   },
 
@@ -145,19 +148,23 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
   return (
     <Fragment>
       <header>
-        <div className={classes.toolbar} aria-label="navigations-header">
-          <nav className={classes.toolbar_navigation}>
+        {/* Semantic Fix: aria-label von <div> entfernt, gehört auf das <nav>-Element */}
+        <div className={classes.toolbar}>
+          <nav className={classes.toolbar_navigation} aria-label="Hauptnavigation">
             <div>
               <DrawerToggleButton className={classes.toggleButton} click={drawerClickHandler} />
             </div>
-            <NavLink exact to={"/"}>
+            
+            {/* A11y Fix für Logo-Links: Link benennen, Bild für Screenreader verstecken */}
+            <NavLink exact to={"/"} aria-label="Zur Startseite">
               <SVG
                 className={classes.logo}
                 src={require("../../logos/uni_logo.svg")}
-                description="Universität Bremen Logo"
-                alt="Uni Logo - Link zur Startseite"
+                aria-hidden="true" 
+                focusable="false"
               />
             </NavLink>
+
             <div className={classes.toolbar_navigationItems}>
               <ul>
                 <li>
@@ -182,13 +189,13 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
                 </li>
               </ul>
             </div>
-            <div style={{ display: "flex" }}>
+            
+            <div style={{ display: "flex", alignItems: "center" }}>
               <FontSelect setFontSize={setFontSize} />
               <img
                 className={classes.buaLogo}
                 src={require("../../logos/logo_archiv_web_200.png")}
-                description="Universitätsarchiv Bremen Logo"
-                alt="Universitätsarchiv Bremen Logo"
+                alt="Logo Universitätsarchiv Bremen"
               />
             </div>
           </nav>
@@ -203,7 +210,6 @@ const Toolbar = ({ drawerClickHandler, setFontSize }) => {
             key={key}
             render={(props) => {
               const crumbs = routes
-                // Get all routes that contain the current one.
                 .filter(({ path }) => props.match.path.includes(path));
               return <Breadcrumbs crumbs={crumbs} />;
             }}
