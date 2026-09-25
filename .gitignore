@@ -12,7 +12,7 @@
 #config
 /src/api
 
-*.php
+config.php
 
 # misc
 .DS_Store
