@@ -68,15 +68,21 @@ const Links = () => {
 
     list: {
       "& a": {
-        textDecoration: "none",
+        textDecoration: "underline", // A11y Fix: Links im Fließtext müssen unterstrichen sein
         color: "#6a1b9a",
         marginLeft: "0.5rem",
+        "&:focus-visible": {
+          outline: "2px solid #6a1b9a",
+          outlineOffset: "2px",
+        }
       },
 
       "& a:visited": {
-        textDecoration: "none",
-        color: "#6a1b9a",
+        color: "#4a148c", // Etwas dunkleres Lila für besuchte Links
       },
+      "& a:hover": {
+        textDecoration: "none",
+      }
     },
     title: {
       padding: "0.5rem",
@@ -93,116 +99,122 @@ const Links = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Kunstwerke</title>
+        {/* Semantic Fix: Falscher Seitentitel */}
+        <title>Links - Campuskunst</title>
       </Helmet>
       <Fade in={true} timeout={1000}>
-        <Container className={classes.main} justify="true" role="main">
-          <h1>Links</h1>
+        {/* Semantic Fix: component="main" statt role="main" */}
+        <Container className={classes.main} component="main">
+          <Typography variant="h3" component="h1" gutterBottom>
+            Links
+          </Typography>
           <Grid container spacing={6}>
             <Grid className={classes.item} item xs={12} md={4} sm={6}>
               <Paper elevation={3} className={classes.paper}>
-                <Typography component={"span"} className={classes.content}>
+                {/* Semantic Fix: component="div" statt "span" als Wrapper */}
+                <div className={classes.content}>
                   <Typography
                     variant="h6"
-                    variantMapping={{ h6: "h2" }}
+                    component="h2"
                     className={classes.title}
                   >
                     Institutionen
                   </Typography>
                   <List className={classes.list}>
-                    {institutions.map((institutionsData, index) => {
-                      if (institutions.length > 0) {
-                        return (
-                          <ListItem
-                            className={classes.listItemText}
-                            key={index}
+                    {institutions.length > 0 ? (
+                      institutions.map((institutionsData, index) => (
+                        <ListItem
+                          className={classes.listItemText}
+                          key={index}
+                        >
+                          <BusinessRoundedIcon aria-hidden="true" focusable="false" />
+                          <a
+                            href={`${institutionsData.link}`}
+                            rel="noopener noreferrer"
+                            // A11y Fix: Wenn der Link die Seite verlässt, sollte das angesagt werden
+                            aria-label={`${institutionsData.name} (öffnet in neuem Tab)`}
+                            target="_blank" // Falls es externe Links sind
                           >
-                            <BusinessRoundedIcon aria-hidden="true" />
-                            <a
-                              href={`${institutionsData.link}`}
-                              rel="noopener noreferrer"
-                            >
-                              {institutionsData.name}
-                            </a>
-                          </ListItem>
-                        );
-                      } else {
-                        return <SpinningCircle />;
-                      }
-                    })}
+                            {institutionsData.name}
+                          </a>
+                        </ListItem>
+                      ))
+                    ) : (
+                      <SpinningCircle aria-label="Lade Institutionen" />
+                    )}
                   </List>
-                </Typography>
+                </div>
               </Paper>
             </Grid>
             <Grid className={classes.item} item xs={12} md={4} sm={6}>
               <Paper elevation={3} className={classes.paper}>
-                <Typography component={"span"} className={classes.content}>
+                <div className={classes.content}>
                   <Typography
                     variant="h6"
-                    variantMapping={{ h6: "h2" }}
+                    component="h2"
                     className={classes.title}
                   >
                     KünstlerInnen
                   </Typography>
                   <List className={classes.list}>
-                    {artists.map((artistsData, index) => {
-                      if (artists.length > 0) {
-                        return (
-                          <ListItem
-                            className={classes.listItemText}
-                            key={index}
+                    {artists.length > 0 ? (
+                      artists.map((artistsData, index) => (
+                        <ListItem
+                          className={classes.listItemText}
+                          key={index}
+                        >
+                          <BusinessRoundedIcon aria-hidden="true" focusable="false" />
+                          <a
+                            href={`${artistsData.link}`}
+                            rel="noopener noreferrer"
+                            aria-label={`${artistsData.name} (öffnet in neuem Tab)`}
+                            target="_blank"
                           >
-                            <BusinessRoundedIcon aria-hidden="true" />
-                            <a
-                              href={`${artistsData.link}`}
-                              rel="noopener noreferrer"
-                            >
-                              {artistsData.name}
-                            </a>
-                          </ListItem>
-                        );
-                      } else {
-                        return <SpinningCircle />;
-                      }
-                    })}
+                            {artistsData.name}
+                          </a>
+                        </ListItem>
+                      ))
+                    ) : (
+                      <SpinningCircle aria-label="Lade KünstlerInnen" />
+                    )}
                   </List>
-                </Typography>
+                </div>
               </Paper>
             </Grid>
             <Grid className={classes.item} item xs={12} sm={4}>
               <Paper elevation={3} className={classes.paper}>
-                <Typography component={"span"} className={classes.content}>
+                <div className={classes.content}>
                   <Typography
                     variant="h6"
-                    variantMapping={{ h6: "h2" }}
+                    component="h2"
                     className={classes.title}
                   >
                     Weiterführende Online-Informationen
                   </Typography>
                   <List className={classes.list}>
-                    {furtherInfo.map((furtherInfoData, index) => {
-                      if (furtherInfo.length > 0) {
-                        return (
-                          <ListItem
-                            className={classes.listItemText}
-                            key={index}
-                            alignItems="top"
+                    {furtherInfo.length > 0 ? (
+                      furtherInfo.map((furtherInfoData, index) => (
+                        <ListItem
+                          className={classes.listItemText}
+                          key={index}
+                          alignItems="flex-start" // A11y Fix: 'top' ist kein gültiger Wert, 'flex-start' ist richtig
+                        >
+                          <InfoOutlinedIcon className={classes.icon} aria-hidden="true" focusable="false" />
+                          <a
+                            href={`${furtherInfoData.link}`}
+                            rel="noopener noreferrer"
+                            aria-label={`${furtherInfoData.name} (öffnet in neuem Tab)`}
+                            target="_blank"
                           >
-                            <InfoOutlinedIcon className={classes.icon} aria-hidden="true" />
-                            <a
-                              href={`${furtherInfoData.link}`}
-                              rel="noopener noreferrer"
-                            >
-                              {furtherInfoData.name}
-                            </a>
-                          </ListItem>
-                        );
-                      } else {
-                        return <SpinningCircle />;
-                      }
-                    })}
+                            {furtherInfoData.name}
+                          </a>
+                        </ListItem>
+                      ))
+                    ) : (
+                      <SpinningCircle aria-label="Lade weitere Informationen" />
+                    )}
                   </List>
-                </Typography>
+                </div>
               </Paper>
             </Grid>
           </Grid>
