@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2rem",
     marginBottom: '3rem',
   },
+  label: {
+    fontWeight: "600",
+    color: theme.palette.text.primary,
+  }
 }));
 
 const marks = [
@@ -67,15 +71,22 @@ const SliderBar = (props) => {
 
   return (
     <Fragment>
-      <Container className={classes.root} maxWidth="lg" id="jahres-slider">
-        <Typography aria-label="Slider Überschrift" gutterBottom>
-          Zeitraum
+      <Container className={classes.root} maxWidth="lg">
+        <Typography 
+          id="zeitraum-slider-label" 
+          className={classes.label} 
+          gutterBottom
+          component="label"
+        >
+          Zeitraum filtern:
         </Typography>
         <Slider
           value={props.value}
           onChange={props.onChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="jahres-slider"
+          // "off" schaltet die Popup-Bubbles samt Animation komplett ab
+          valueLabelDisplay="off"
+          aria-labelledby="zeitraum-slider-label"
+          getAriaValueText={(value) => `Jahr ${value}`}
           marks={marks}
           min={props.min}
           max={props.max}
