@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     textAlign: "left",
   },
+  formLabel: {
+    // Label visuell etwas absetzen und lesbar machen
+    marginBottom: "0.5rem",
+    fontWeight: "600",
+    color: theme.palette.text.primary,
+  }
 }));
 
 const Search = ({
@@ -45,38 +51,42 @@ const Search = ({
 
   return (
     <Fragment>
-      <Container maxWidth="md" className={classes.searchBarContainer}>
-        <FormLabel htmlFor="Suchfeld" className={classes.FormLabel}>
-          Suchfeld
-        </FormLabel>
-        <TextField
-          id="Suchfeld"
-          placeholder="Kunstwerkname"
-          type="search"
-          variant="outlined"
-          className={classes.searchBar}
-          fullWidth
-          aria-label="Suchfeld"
-          value={searchValue}
-          onChange={handleSearchInputChanges}
-          onKeyPress={(e) => toogleFilterOnEnter(e)}
-          InputLabelProps={{
-            shrink: false,
-          }}
-        />
-      </Container>
-      <Container>
-        <Filter
-          tag={tags}
-          setTags={setTags}
-          value={value}
-          valuetext={valuetext}
-          onChange={onChange}
-          min={min}
-          max={max}
-          toggleFilter={toggleFilter}
-        />
-      </Container>
+      {/* Semantic Fix: Die Suche und die Filter gehören semantisch in eine <form> */}
+      <form noValidate autoComplete="off" role="search" onSubmit={(e) => e.preventDefault()}>
+        <Container maxWidth="md" className={classes.searchBarContainer}>
+          <FormLabel htmlFor="search-input" className={classes.formLabel}>
+            Nach Kunstwerk suchen
+          </FormLabel>
+          <TextField
+            id="search-input" // Eindeutige englische ID (Best Practice)
+            placeholder="Z.B. Radfahrer, Skulptur..." // Aussagekräftigerer Placeholder
+            type="search"
+            variant="outlined"
+            className={classes.searchBar}
+            fullWidth
+            // aria-label entfernt, da wir ein echtes sichtbares FormLabel haben, 
+            // das über htmlFor mit der id verbunden ist
+            value={searchValue}
+            onChange={handleSearchInputChanges}
+            onKeyPress={(e) => toogleFilterOnEnter(e)}
+            InputLabelProps={{
+              shrink: false,
+            }}
+          />
+        </Container>
+        <Container>
+          <Filter
+            tag={tags}
+            setTags={setTags}
+            value={value}
+            valuetext={valuetext}
+            onChange={onChange}
+            min={min}
+            max={max}
+            toggleFilter={toggleFilter}
+          />
+        </Container>
+      </form>
     </Fragment>
   );
 };
