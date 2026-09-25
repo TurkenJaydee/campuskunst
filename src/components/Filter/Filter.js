@@ -15,10 +15,32 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
+    border: 'none', // Wichtig, falls wir fieldset nutzen, um den Standard-Rahmen zu entfernen
+    padding: 0,
+    margin: 0,
     '& > *': {
       margin: theme.spacing(0.5),
     },
   },
+  // Klasse, um Elemente nur für Screenreader sichtbar zu machen
+  srOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: '0',
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: '0',
+  },
+  button: {
+    marginTop: theme.spacing(2),
+    "&:focus-visible": {
+      outline: "3px solid #1976d2",
+      outlineOffset: "2px",
+    }
+  }
 }));
 
 const Filter = (
@@ -31,29 +53,26 @@ const Filter = (
     toggleFilter }
 ) => {
 
-
+  // A11y Fix: aria-hidden="true" und focusable="false" zu allen Icons hinzugefügt
   const TAGLIST = [
-    { name: "Landschaft", icon: <FilterHdrOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Skulptur", icon: <AccessibilityNewOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Installation", icon: <SettingsOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Gemälde", icon: <BrushOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-    { name: "Ausstellung", icon: <CategoryOutlinedIcon style={{marginLeft: '0.5rem'}}/> },
-  ]
+    { name: "Landschaft", icon: <FilterHdrOutlinedIcon style={{marginLeft: '0.5rem'}} aria-hidden="true" focusable="false" /> },
+    { name: "Skulptur", icon: <AccessibilityNewOutlinedIcon style={{marginLeft: '0.5rem'}} aria-hidden="true" focusable="false" /> },
+    { name: "Installation", icon: <SettingsOutlinedIcon style={{marginLeft: '0.5rem'}} aria-hidden="true" focusable="false" /> },
+    { name: "Gemälde", icon: <BrushOutlinedIcon style={{marginLeft: '0.5rem'}} aria-hidden="true" focusable="false" /> },
+    { name: "Ausstellung", icon: <CategoryOutlinedIcon style={{marginLeft: '0.5rem'}} aria-hidden="true" focusable="false" /> },
+  ];
 
   const addTag = (e) => {
     setTags(oldTags => [...oldTags, e]);
   };
 
-
   const classes = useStyles();
 
   return (
     <Fragment>
-      <div
-        className={classes.root}
-        role="group"
-        aria-label="Kategorien wählen"
-      >
+      {/* Semantic Fix: <fieldset> und <legend> statt <div role="group"> */}
+      <fieldset className={classes.root}>
+        <legend className={classes.srOnly}>Kategorien wählen</legend>
         {TAGLIST.map((tag, index) => {
           return <Tag
             key={index}
@@ -62,7 +81,7 @@ const Filter = (
             icon={tag.icon}
           />
         })}
-      </div>
+      </fieldset>
 
       <SliderBar
         value={value}
@@ -76,12 +95,11 @@ const Filter = (
         variant="contained"
         color="primary"
         className={classes.button}
-        startIcon={<AutorenewOutlinedIcon />}
+        // A11y Fix: aria-hidden auf das Button-Icon
+        startIcon={<AutorenewOutlinedIcon aria-hidden="true" focusable="false" />}
         onClick={toggleFilter}
         size="large"
         type="button"
-        aria-label="Filter-Ergebnisse anwenden"
-        title="Filter-Ergebnisse anwenden"
       >
         Filtern
       </Button>
