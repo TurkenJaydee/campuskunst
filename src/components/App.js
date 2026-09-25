@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const App = () => {
-  const [sideDrawerOpen, setSideDrawer] = useState(false);
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [fontSize, setFontSize] = useState();
   const classes = useStyles();
 
@@ -139,27 +139,30 @@ const App = () => {
   });
 
   const drawerToggleClickHandler = () => {
-    setSideDrawer(!sideDrawerOpen);
+    setSideDrawerOpen((prevState) => !prevState);
   };
 
   const drawerCloseHandler = () => {
-    setSideDrawer(false);
+    setSideDrawerOpen(false);
   };
 
   return (
     <div className={classes.appContainer}>
       <Helmet>
-        <title>campuskunst</title>
+        {/* A11y Fix: Aussagekräftigerer Standard-Titel (Großschreibung) */}
+        <title>Campuskunst - Universität Bremen</title>
+        <html lang="de" /> {/* A11y Fix: Sprache des Dokuments festlegen */}
       </Helmet>
       <ThemeProvider theme={theme}>
         <Fragment>
           <CssBaseline />
           <Router>
             <Fragment>
+              {/* A11y Fix: role="navigation" entfernt, da wir in Toolbar.js jetzt ein echtes <nav> Tag nutzen */}
               <Toolbar
-                role="navigation"
                 drawerClickHandler={drawerToggleClickHandler}
                 setFontSize={(e) => setFontSize(e)}
+                sideDrawerOpen={sideDrawerOpen} 
               />
             </Fragment>
             <SideDrawer
@@ -167,6 +170,10 @@ const App = () => {
               close={drawerToggleClickHandler}
               closeOnClick={drawerCloseHandler}
             />
+            {/* A11y Anmerkung: In deiner Toolbar.js renderst du bereits den Switch-Router, 
+                welcher die Views (Start, Artpieces etc.) anzeigt. Falls dieser <main> Container 
+                hier in App.js leer bleibt, solltest du ihn entfernen. Die <main>-Rolle ist 
+                bereits in den jeweiligen Seiten-Komponenten implementiert. */}
             <main className={classes.mainContent}>
             </main>
           </Router>

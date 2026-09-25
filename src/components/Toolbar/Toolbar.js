@@ -113,8 +113,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.2rem",
       textDecoration: "none",
       padding: "1rem 0 1rem 0",
-      borderRadius: "4px", // Leicht abgerundet für den Fokus-Rahmen
-      // Fokus-Sichtbarkeit für Tastaturnutzer
+      borderRadius: "4px",
       "&:focus-visible": {
         outline: "3px solid #1976d2",
         outlineOffset: "2px",
@@ -142,20 +141,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Toolbar = ({ drawerClickHandler, setFontSize }) => {
+const Toolbar = ({ drawerClickHandler, setFontSize, sideDrawerOpen }) => {
   const classes = useStyles();
 
   return (
     <Fragment>
       <header>
-        {/* Semantic Fix: aria-label von <div> entfernt, gehört auf das <nav>-Element */}
         <div className={classes.toolbar}>
           <nav className={classes.toolbar_navigation} aria-label="Hauptnavigation">
             <div>
-              <DrawerToggleButton className={classes.toggleButton} click={drawerClickHandler} />
+              {/* Hier wird sideDrawerOpen an den Toggle-Button weitergereicht */}
+              <DrawerToggleButton 
+                click={drawerClickHandler} 
+                isOpen={sideDrawerOpen} 
+              />
             </div>
             
-            {/* A11y Fix für Logo-Links: Link benennen, Bild für Screenreader verstecken */}
             <NavLink exact to={"/"} aria-label="Zur Startseite">
               <SVG
                 className={classes.logo}
